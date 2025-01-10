@@ -2,19 +2,25 @@ package HealthyCooking;
 
 public class Ingredient { 
     private String name; 
-    private int nutritionValue;
-    private boolean isHealthy; 
+    private double nutritionValue;
+    private double healthScore; 
     
-    public Ingredient(String name, int nutritionValue, boolean isHealthy) { 
+    public Ingredient(String name, double nutritionValue, double healthScore) { 
         this.name = name; 
         this.nutritionValue = nutritionValue; 
-        this.isHealthy = isHealthy; } 
+        this.healthScore = healthScore; } 
         
-    public int getNutritionValue() { 
-        return nutritionValue; } 
+    public String getName() {
+        return name;
+    }
+
+    public double getNutritionValue() { 
+        return nutritionValue; 
+    } 
         
-    public boolean isHealthy() { 
-        return isHealthy; }
+    public double getHealthScore() { 
+        return healthScore; 
+    }
         
     @Override public String toString() {
         return null;

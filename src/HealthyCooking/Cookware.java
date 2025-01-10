@@ -2,16 +2,23 @@ package HealthyCooking;
 
 public class Cookware {
     private String type; // Type of cookware to be used
-    private boolean isHealthyCookware; // Is the cookware healthy?
+    private double healthImapct; // Is the cookware healthy?
 
-    public Cookware(String type, boolean isHealthyCookware) { 
-        this.type = type; this.isHealthyCookware = isHealthyCookware;
-    } public boolean isHealthyCookware() { 
-        return isHealthyCookware; 
+    public Cookware(String type, double healthImapct) { 
+        this.type = type; 
+        this.healthImapct = healthImapct;
     } 
+    
+    public String getType() {
+        return type;
+    }
+
+    public double getHealthImapct() {
+        return healthImapct;
+    }
     
     @Override 
     public String toString() { 
-        return null;; 
+        return null;
     }
 }
