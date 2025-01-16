@@ -11,13 +11,13 @@ public class Ingredient {
     private String name; 
     private double nutritionValue;
     private double healthScore; 
-    //private boolean required; // If this ingredient is required for the recipe //TODO FIX THIS
+    private boolean required; // If this ingredient is required for the recipe //TODO FIX THIS
     
-    public Ingredient(String name, double nutritionValue, double healthScore) { 
+    public Ingredient(String name, double nutritionValue, double healthScore, boolean isRequired) { 
         this.name = name; 
         this.nutritionValue = nutritionValue; 
         this.healthScore = healthScore; 
-        //this.required = isRequired;
+        this.required = isRequired;
     } 
         
     public String getName() {
@@ -32,9 +32,9 @@ public class Ingredient {
         return healthScore; 
     }
 
-    //public boolean isRequired() {
-        //return required;
-    // }
+    public boolean isRequired() {
+        return required;
+    }
         
     @Override public String toString() {
         return null;

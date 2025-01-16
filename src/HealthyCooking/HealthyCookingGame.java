@@ -38,20 +38,20 @@ public class HealthyCookingGame {
                 System.out.println("Cooking Time: 30 minutes");
 
                 //Add ingredients to the Ingredients ArrayList
-                Ingredient quinoa = new Ingredient("Quinoa", 222, 9);
-                Ingredient carrots = new Ingredient("Carrots", 41, 3);
-                Ingredient bellPeppers = new Ingredient("Bell Peppers", 31, 1);
-                Ingredient zucchini = new Ingredient("Zucchini", 20, 1);
-                Ingredient cherryTomatoes = new Ingredient("Cherry Tomatoes", 18, 1);
-                Ingredient redOnion = new Ingredient("Red Onion", 40, 2);
-                Ingredient sweetPotatoes = new Ingredient("Sweet Potatoes", 112, 5);
-                Ingredient oliveOil = new Ingredient("Olive Oil", 119, 7);
-                Ingredient salt = new Ingredient("Salt", 0, 0);
-                Ingredient pepper = new Ingredient("Pepper", 0, 0);
-                Ingredient lemonJuice = new Ingredient("Lemon Juice", 4, 0);
-                Ingredient parsley = new Ingredient("Parsley", 1, 0);
-                Ingredient fetaCheese = new Ingredient("Feta Cheese", 264, 21);
-                Ingredient chickpeas = new Ingredient("Chickpeas", 164, 3);
+                Ingredient quinoa = new Ingredient("Quinoa", 222, 9); //Required
+                Ingredient carrots = new Ingredient("Carrots", 41, 3); //Required 
+                Ingredient bellPeppers = new Ingredient("Bell Peppers", 31, 1); //Required
+                Ingredient zucchini = new Ingredient("Zucchini", 20, 1); //Required
+                Ingredient cherryTomatoes = new Ingredient("Cherry Tomatoes", 18, 1); //Required
+                Ingredient redOnion = new Ingredient("Red Onion", 40, 2); //Required
+                Ingredient sweetPotatoes = new Ingredient("Sweet Potatoes", 112, 5); //Required
+                Ingredient oliveOil = new Ingredient("Olive Oil", 119, 7); //Required
+                Ingredient salt = new Ingredient("Salt", 0, 0); //Required
+                Ingredient pepper = new Ingredient("Pepper", 0, 0); //Required
+                Ingredient lemonJuice = new Ingredient("Lemon Juice", 4, 0); //Required
+                Ingredient parsley = new Ingredient("Parsley", 1, 0); //Required
+                Ingredient fetaCheese = new Ingredient("Feta Cheese", 264, 21); //Required
+                Ingredient chickpeas = new Ingredient("Chickpeas", 164, 3); //Required
                 Ingredient avocado = new Ingredient("Avocado", 240, 10);
                 Ingredient pumpkinSeeds = new Ingredient("Pumpkin Seeds", 153, 13);
                 Ingredient almonds = new Ingredient("Almonds", 7, 1);
@@ -75,15 +75,14 @@ public class HealthyCookingGame {
                 ingredients.add(almonds);
                 
                 // Add Cookwares to the Cookware ArrayList
-                Cookware bakingSheet = new Cookware("Baking Sheet", 5); 
-                Cookware largeBowl = new Cookware("Large Bowl", 4);
-                Cookware smallBowl = new Cookware("Small Bowl", 3);
-                Cookware saucepan = new Cookware("Saucepan", 3);
-                Cookware mixingBowl = new Cookware("Mixing Bowl", 2);
-                Cookware knife = new Cookware("Knife", 1);
-                Cookware cuttingBoard = new Cookware("Cutting Board", 1);
-                Cookware measuringSpoons = new Cookware("Measuring Spoons", 1);
-
+                Cookware bakingSheet = new Cookware("Baking Sheet", 5); //Required
+                Cookware largeBowl = new Cookware("Large Bowl", 4); //Required
+                Cookware smallBowl = new Cookware("Small Bowl", 3); //Required
+                Cookware saucepan = new Cookware("Saucepan", 3); //Required
+                Cookware mixingBowl = new Cookware("Mixing Bowl", 2); //Required
+                Cookware knife = new Cookware("Knife", 1); //Required
+                Cookware cuttingBoard = new Cookware("Cutting Board", 1); //Required
+                Cookware measuringSpoons = new Cookware("Measuring Spoons", 1); //Required
 
                 cookware.add(bakingSheet);
                 cookware.add(largeBowl);
@@ -105,17 +104,17 @@ public class HealthyCookingGame {
                 System.out.println("Cooking Time: 45 minutes");
 
                 //Add ingredients to the Ingredient ArrayList
-                Ingredient lentils = new Ingredient("Lentils", 230, 10);
-                Ingredient sweetPotatoes = new Ingredient("Sweet Potatoes", 112, 5);
-                Ingredient carrots = new Ingredient("Carrots", 41, 3);
-                Ingredient celery = new Ingredient("Celery", 16, 1);
-                Ingredient onion = new Ingredient("Onion", 44, 2);
-                Ingredient garlic = new Ingredient("Garlic", 4, 0);
-                Ingredient dicedTomatoes = new Ingredient("Diced Tomatoes", 32, 0);
-                Ingredient vegetableBroth = new Ingredient("Vegetable Broth", 10, 0);
-                Ingredient salt = new Ingredient("Salt", 0, 0);
-                Ingredient pepper = new Ingredient("Pepper", 0, 0);
-                Ingredient oliveOil = new Ingredient("Olive Oil", 119, 7);
+                Ingredient lentils = new Ingredient("Lentils", 230, 10); //Required
+                Ingredient sweetPotatoes = new Ingredient("Sweet Potatoes", 112, 5); //Required
+                Ingredient carrots = new Ingredient("Carrots", 41, 3); //Required
+                Ingredient celery = new Ingredient("Celery", 16, 1); 
+                Ingredient onion = new Ingredient("Onion", 44, 2); //Required
+                Ingredient garlic = new Ingredient("Garlic", 4, 0); //Required
+                Ingredient dicedTomatoes = new Ingredient("Diced Tomatoes", 32, 0); //Required
+                Ingredient vegetableBroth = new Ingredient("Vegetable Broth", 10, 0); //Required
+                Ingredient salt = new Ingredient("Salt", 0, 0); //Required
+                Ingredient pepper = new Ingredient("Pepper", 0, 0); //Required
+                Ingredient oliveOil = new Ingredient("Olive Oil", 119, 7); //Required
                 Ingredient bayLeaves = new Ingredient("Bay Leaves", 5, 0);
                 Ingredient paprika = new Ingredient("Paprika", 20, 1);
                 Ingredient lemonJuice = new Ingredient("Lemon Juice", 4, 0);
@@ -138,12 +137,12 @@ public class HealthyCookingGame {
                 ingredients.add(parsley);
 
                 //Add cookware to the Cookware ArrayList
-                Cookware largePot = new Cookware("Large Pot", 5);
-                Cookware saucepan = new Cookware("Saucepan", 3);
-                Cookware knife = new Cookware("Knife", 1);
-                Cookware cuttingBoard = new Cookware("Cutting Board", 1);
-                Cookware woodenSpoon = new Cookware("Wooden Spoon", 1);
-                Cookware measuringSpoon = new Cookware("Measuring Spoon", 1);
+                Cookware largePot = new Cookware("Large Pot", 5); //Required
+                Cookware saucepan = new Cookware("Saucepan", 3); //Required
+                Cookware knife = new Cookware("Knife", 1); //Required
+                Cookware cuttingBoard = new Cookware("Cutting Board", 1); //Required
+                Cookware woodenSpoon = new Cookware("Wooden Spoon", 1); //Required
+                Cookware measuringSpoon = new Cookware("Measuring Spoon", 1); //Required
 
                 cookware.add(largePot);
                 cookware.add(saucepan);
@@ -162,18 +161,18 @@ public class HealthyCookingGame {
 
 
                 //Add ingredients to the Ingredients ArrayList
-                Ingredient chickenBreast = new Ingredient("Chicken Breast", 165, 8);
-                Ingredient cherryTomatoes = new Ingredient("Cherry Tomatoes", 18, 1);
-                Ingredient mango = new Ingredient("Mango", 60, 3);
-                Ingredient mixedGreens = new Ingredient("Mixed Greens", 5, 0);
-                Ingredient cucumber = new Ingredient("Cucumber", 8, 0);
-                Ingredient redOnion = new Ingredient("Red Onion", 40, 2);
-                Ingredient avocado = new Ingredient("Avocado", 240, 10);
-                Ingredient oliveOil = new Ingredient("Olive Oil", 119, 7);
-                Ingredient salt = new Ingredient("Salt", 0, 0);
-                Ingredient pepper = new Ingredient("Pepper", 0, 0);
-                Ingredient freshCilantro = new Ingredient("Fresh Cilantro", 1, 0);
-                Ingredient limeWedges = new Ingredient("Lime Wedges", 4, 0);
+                Ingredient chickenBreast = new Ingredient("Chicken Breast", 165, 8); //Required
+                Ingredient cherryTomatoes = new Ingredient("Cherry Tomatoes", 18, 1); //Required
+                Ingredient mango = new Ingredient("Mango", 60, 3); //Required
+                Ingredient mixedGreens = new Ingredient("Mixed Greens", 5, 0); //Required
+                Ingredient cucumber = new Ingredient("Cucumber", 8, 0); //Required
+                Ingredient redOnion = new Ingredient("Red Onion", 40, 2); //Required
+                Ingredient avocado = new Ingredient("Avocado", 240, 10); 
+                Ingredient oliveOil = new Ingredient("Olive Oil", 119, 7); //Required
+                Ingredient salt = new Ingredient("Salt", 0, 0); //Required
+                Ingredient pepper = new Ingredient("Pepper", 0, 0); //Required
+                Ingredient freshCilantro = new Ingredient("Fresh Cilantro", 1, 0); 
+                Ingredient limeWedges = new Ingredient("Lime Wedges", 4, 0); //Required
 
                 ingredients.add(chickenBreast);
                 ingredients.add(cherryTomatoes);
@@ -189,15 +188,15 @@ public class HealthyCookingGame {
                 ingredients.add(limeWedges);
 
                 //Add cookware to the Cookware ArrayList
-                Cookware grillPan = new Cookware("Grill Pan", 5);
-                Cookware tongs = new Cookware("Tongs", 2);
-                Cookware largeBowl = new Cookware("Large Bowl", 4);
-                Cookware smallBowl = new Cookware("Small Bowl", 3);
-                Cookware knife = new Cookware("Knife", 1);
-                Cookware cuttingBoard = new Cookware("Cutting Board", 1);
-                Cookware measuringSpoons = new Cookware("Measuring Spoons", 2);
-                Cookware measuringCups = new Cookware("Measuring Cups", 2);
-                Cookware fork = new Cookware("Fork", 1);
+                Cookware grillPan = new Cookware("Grill Pan", 5); //Required
+                Cookware tongs = new Cookware("Tongs", 2); //Required
+                Cookware largeBowl = new Cookware("Large Bowl", 4); //Required
+                Cookware smallBowl = new Cookware("Small Bowl", 3); //Required
+                Cookware knife = new Cookware("Knife", 1); //Required
+                Cookware cuttingBoard = new Cookware("Cutting Board", 1); //Required
+                Cookware measuringSpoons = new Cookware("Measuring Spoons", 2); //Required
+                Cookware measuringCups = new Cookware("Measuring Cups", 2); //Required
+                Cookware fork = new Cookware("Fork", 1); //Required
 
                 cookware.add(grillPan);
                 cookware.add(tongs);
