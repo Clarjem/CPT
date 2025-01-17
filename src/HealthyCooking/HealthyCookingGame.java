@@ -25,8 +25,12 @@ public class HealthyCookingGame {
             input.nextLine(); //Flush the next line
 
             String mealName = ""; //Define meal-sepcfic variables
-            ArrayList<Ingredient> ingredients = new ArrayList<>();
-            ArrayList<Cookware> cookware = new ArrayList<>();
+            ArrayList<Ingredient> requiredIngredients = new ArrayList<>();
+            ArrayList<Ingredient> selectedIngredients = new ArrayList<>();
+            ArrayList<Ingredient> optionalIngredients = new ArrayList<>(); //TODO Need to fix this so ingredients are suggested along with required ingredients
+            ArrayList<Cookware> requiredCookware = new ArrayList<>();
+            ArrayList<Cookware> selectedCookware = new ArrayList<>();
+            ArrayList<Cookware> optionalCookware = new ArrayList<>();
 
             // GPT HELPED WITH INGREDIENTS AND COOKWARE!!
 
@@ -38,60 +42,60 @@ public class HealthyCookingGame {
                 System.out.println("Cooking Time: 30 minutes");
 
                 //Add ingredients to the Ingredients ArrayList
-                Ingredient quinoa = new Ingredient("Quinoa", 222, 9); //Required
-                Ingredient carrots = new Ingredient("Carrots", 41, 3); //Required 
-                Ingredient bellPeppers = new Ingredient("Bell Peppers", 31, 1); //Required
-                Ingredient zucchini = new Ingredient("Zucchini", 20, 1); //Required
-                Ingredient cherryTomatoes = new Ingredient("Cherry Tomatoes", 18, 1); //Required
-                Ingredient redOnion = new Ingredient("Red Onion", 40, 2); //Required
-                Ingredient sweetPotatoes = new Ingredient("Sweet Potatoes", 112, 5); //Required
-                Ingredient oliveOil = new Ingredient("Olive Oil", 119, 7); //Required
-                Ingredient salt = new Ingredient("Salt", 0, 0); //Required
-                Ingredient pepper = new Ingredient("Pepper", 0, 0); //Required
-                Ingredient lemonJuice = new Ingredient("Lemon Juice", 4, 0); //Required
-                Ingredient parsley = new Ingredient("Parsley", 1, 0); //Required
-                Ingredient fetaCheese = new Ingredient("Feta Cheese", 264, 21); //Required
-                Ingredient chickpeas = new Ingredient("Chickpeas", 164, 3); //Required
-                Ingredient avocado = new Ingredient("Avocado", 240, 10);
-                Ingredient pumpkinSeeds = new Ingredient("Pumpkin Seeds", 153, 13);
-                Ingredient almonds = new Ingredient("Almonds", 7, 1);
+                Ingredient quinoa = new Ingredient("Quinoa", 222, 9, true); //Required
+                Ingredient carrots = new Ingredient("Carrots", 41, 3, true); //Required 
+                Ingredient bellPeppers = new Ingredient("Bell Peppers", 31, 1, true); //Required
+                Ingredient zucchini = new Ingredient("Zucchini", 20, 1, true); //Required
+                Ingredient cherryTomatoes = new Ingredient("Cherry Tomatoes", 18, 1, true); //Required
+                Ingredient redOnion = new Ingredient("Red Onion", 40, 2, true); //Required
+                Ingredient sweetPotatoes = new Ingredient("Sweet Potatoes", 112, 5, true); //Required
+                Ingredient oliveOil = new Ingredient("Olive Oil", 119, 7, true); //Required
+                Ingredient salt = new Ingredient("Salt", 0, 0, true); //Required
+                Ingredient pepper = new Ingredient("Pepper", 0, 0, true); //Required
+                Ingredient lemonJuice = new Ingredient("Lemon Juice", 4, 0, true); //Required
+                Ingredient parsley = new Ingredient("Parsley", 1, 0, true); //Required
+                Ingredient fetaCheese = new Ingredient("Feta Cheese", 264, 21, true); //Required
+                Ingredient chickpeas = new Ingredient("Chickpeas", 164, 3, true); //Required
+                Ingredient avocado = new Ingredient("Avocado", 240, 10, false);
+                Ingredient pumpkinSeeds = new Ingredient("Pumpkin Seeds", 153, 13, false);
+                Ingredient almonds = new Ingredient("Almonds", 7, 1, false);
 
-                ingredients.add(quinoa);
-                ingredients.add(carrots);  
-                ingredients.add(bellPeppers);
-                ingredients.add(zucchini); 
-                ingredients.add(cherryTomatoes);
-                ingredients.add(redOnion);  
-                ingredients.add(sweetPotatoes);
-                ingredients.add(oliveOil);
-                ingredients.add(salt);
-                ingredients.add(pepper);  
-                ingredients.add(lemonJuice);
-                ingredients.add(parsley);
-                ingredients.add(fetaCheese);
-                ingredients.add(chickpeas);
-                ingredients.add(avocado);  
-                ingredients.add(pumpkinSeeds);
-                ingredients.add(almonds);
+                requiredIngredients.add(quinoa);
+                requiredIngredients.add(carrots);  
+                requiredIngredients.add(bellPeppers);
+                requiredIngredients.add(zucchini); 
+                requiredIngredients.add(cherryTomatoes);
+                requiredIngredients.add(redOnion);  
+                requiredIngredients.add(sweetPotatoes);
+                requiredIngredients.add(oliveOil);
+                requiredIngredients.add(salt);
+                requiredIngredients.add(pepper);  
+                requiredIngredients.add(lemonJuice);
+                requiredIngredients.add(parsley);
+                requiredIngredients.add(fetaCheese);
+                requiredIngredients.add(chickpeas);
+                optionalIngredients.add(avocado);  
+                optionalIngredients.add(pumpkinSeeds);
+                optionalIngredients.add(almonds);
                 
                 // Add Cookwares to the Cookware ArrayList
-                Cookware bakingSheet = new Cookware("Baking Sheet", 5); //Required
-                Cookware largeBowl = new Cookware("Large Bowl", 4); //Required
-                Cookware smallBowl = new Cookware("Small Bowl", 3); //Required
-                Cookware saucepan = new Cookware("Saucepan", 3); //Required
-                Cookware mixingBowl = new Cookware("Mixing Bowl", 2); //Required
-                Cookware knife = new Cookware("Knife", 1); //Required
-                Cookware cuttingBoard = new Cookware("Cutting Board", 1); //Required
-                Cookware measuringSpoons = new Cookware("Measuring Spoons", 1); //Required
+                Cookware bakingSheet = new Cookware("Baking Sheet", 5, true); //Required
+                Cookware largeBowl = new Cookware("Large Bowl", 4, true); //Required
+                Cookware smallBowl = new Cookware("Small Bowl", 3, true); //Required
+                Cookware saucepan = new Cookware("Saucepan", 3, true); //Required
+                Cookware mixingBowl = new Cookware("Mixing Bowl", 2, true); //Required
+                Cookware knife = new Cookware("Knife", 1, true); //Required
+                Cookware cuttingBoard = new Cookware("Cutting Board", 1, true); //Required
+                Cookware measuringSpoons = new Cookware("Measuring Spoons", 1, true); //Required
 
-                cookware.add(bakingSheet);
-                cookware.add(largeBowl);
-                cookware.add(smallBowl);
-                cookware.add(saucepan);
-                cookware.add(mixingBowl);
-                cookware.add(knife);
-                cookware.add(cuttingBoard);
-                cookware.add(measuringSpoons);
+                requiredCookware.add(bakingSheet);
+                requiredCookware.add(largeBowl);
+                requiredCookware.add(smallBowl);
+                requiredCookware.add(saucepan);
+                requiredCookware.add(mixingBowl);
+                requiredCookware.add(knife);
+                requiredCookware.add(cuttingBoard);
+                requiredCookware.add(measuringSpoons);
             } 
             
             //Repeat the process for the other two meals
@@ -104,52 +108,52 @@ public class HealthyCookingGame {
                 System.out.println("Cooking Time: 45 minutes");
 
                 //Add ingredients to the Ingredient ArrayList
-                Ingredient lentils = new Ingredient("Lentils", 230, 10); //Required
-                Ingredient sweetPotatoes = new Ingredient("Sweet Potatoes", 112, 5); //Required
-                Ingredient carrots = new Ingredient("Carrots", 41, 3); //Required
-                Ingredient celery = new Ingredient("Celery", 16, 1); 
-                Ingredient onion = new Ingredient("Onion", 44, 2); //Required
-                Ingredient garlic = new Ingredient("Garlic", 4, 0); //Required
-                Ingredient dicedTomatoes = new Ingredient("Diced Tomatoes", 32, 0); //Required
-                Ingredient vegetableBroth = new Ingredient("Vegetable Broth", 10, 0); //Required
-                Ingredient salt = new Ingredient("Salt", 0, 0); //Required
-                Ingredient pepper = new Ingredient("Pepper", 0, 0); //Required
-                Ingredient oliveOil = new Ingredient("Olive Oil", 119, 7); //Required
-                Ingredient bayLeaves = new Ingredient("Bay Leaves", 5, 0);
-                Ingredient paprika = new Ingredient("Paprika", 20, 1);
-                Ingredient lemonJuice = new Ingredient("Lemon Juice", 4, 0);
-                Ingredient parsley = new Ingredient("Parsley", 1, 0);
+                Ingredient lentils = new Ingredient("Lentils", 230, 10, true); //Required
+                Ingredient sweetPotatoes = new Ingredient("Sweet Potatoes", 112, 5, true); //Required
+                Ingredient carrots = new Ingredient("Carrots", 41, 3, true); //Required
+                Ingredient celery = new Ingredient("Celery", 16, 1, false); 
+                Ingredient onion = new Ingredient("Onion", 44, 2, true); //Required
+                Ingredient garlic = new Ingredient("Garlic", 4, 0, true); //Required
+                Ingredient dicedTomatoes = new Ingredient("Diced Tomatoes", 32, 0, true); //Required
+                Ingredient vegetableBroth = new Ingredient("Vegetable Broth", 10, 0, true); //Required
+                Ingredient salt = new Ingredient("Salt", 0, 0,true); //Required
+                Ingredient pepper = new Ingredient("Pepper", 0, 0, true); //Required
+                Ingredient oliveOil = new Ingredient("Olive Oil", 119, 7, true); //Required
+                Ingredient bayLeaves = new Ingredient("Bay Leaves", 5, 0, false);
+                Ingredient paprika = new Ingredient("Paprika", 20, 1, false);
+                Ingredient lemonJuice = new Ingredient("Lemon Juice", 4, 0, false);
+                Ingredient parsley = new Ingredient("Parsley", 1, 0, false);
 
-                ingredients.add(lentils);
-                ingredients.add(sweetPotatoes);
-                ingredients.add(carrots);
-                ingredients.add(celery);
-                ingredients.add(onion);
-                ingredients.add(garlic);
-                ingredients.add(dicedTomatoes);
-                ingredients.add(vegetableBroth);
-                ingredients.add(salt);
-                ingredients.add(pepper);
-                ingredients.add(oliveOil);
-                ingredients.add(bayLeaves);
-                ingredients.add(paprika);
-                ingredients.add(lemonJuice);
-                ingredients.add(parsley);
+                requiredIngredients.add(lentils);
+                requiredIngredients.add(sweetPotatoes);
+                requiredIngredients.add(carrots);
+                optionalIngredients.add(celery);
+                requiredIngredients.add(onion);
+                requiredIngredients.add(garlic);
+                requiredIngredients.add(dicedTomatoes);
+                requiredIngredients.add(vegetableBroth);
+                requiredIngredients.add(salt);
+                requiredIngredients.add(pepper);
+                requiredIngredients.add(oliveOil);
+                optionalIngredients.add(bayLeaves);
+                optionalIngredients.add(paprika);
+                optionalIngredients.add(lemonJuice);
+                optionalIngredients.add(parsley);
 
                 //Add cookware to the Cookware ArrayList
-                Cookware largePot = new Cookware("Large Pot", 5); //Required
-                Cookware saucepan = new Cookware("Saucepan", 3); //Required
-                Cookware knife = new Cookware("Knife", 1); //Required
-                Cookware cuttingBoard = new Cookware("Cutting Board", 1); //Required
-                Cookware woodenSpoon = new Cookware("Wooden Spoon", 1); //Required
-                Cookware measuringSpoon = new Cookware("Measuring Spoon", 1); //Required
+                Cookware largePot = new Cookware("Large Pot", 5, true); //Required
+                Cookware saucepan = new Cookware("Saucepan", 3, true); //Required
+                Cookware knife = new Cookware("Knife", 1, true); //Required
+                Cookware cuttingBoard = new Cookware("Cutting Board", 1, true); //Required
+                Cookware woodenSpoon = new Cookware("Wooden Spoon", 1, true); //Required
+                Cookware measuringSpoon = new Cookware("Measuring Spoon", 1, true); //Required
 
-                cookware.add(largePot);
-                cookware.add(saucepan);
-                cookware.add(knife);
-                cookware.add(cuttingBoard);
-                cookware.add(woodenSpoon);
-                cookware.add(measuringSpoon);
+                requiredCookware.add(largePot);
+                requiredCookware.add(saucepan);
+                requiredCookware.add(knife);
+                requiredCookware.add(cuttingBoard);
+                requiredCookware.add(woodenSpoon);
+                requiredCookware.add(measuringSpoon);
             }
 
             else if (mealToCook == 3){
@@ -161,60 +165,98 @@ public class HealthyCookingGame {
 
 
                 //Add ingredients to the Ingredients ArrayList
-                Ingredient chickenBreast = new Ingredient("Chicken Breast", 165, 8); //Required
-                Ingredient cherryTomatoes = new Ingredient("Cherry Tomatoes", 18, 1); //Required
-                Ingredient mango = new Ingredient("Mango", 60, 3); //Required
-                Ingredient mixedGreens = new Ingredient("Mixed Greens", 5, 0); //Required
-                Ingredient cucumber = new Ingredient("Cucumber", 8, 0); //Required
-                Ingredient redOnion = new Ingredient("Red Onion", 40, 2); //Required
-                Ingredient avocado = new Ingredient("Avocado", 240, 10); 
-                Ingredient oliveOil = new Ingredient("Olive Oil", 119, 7); //Required
-                Ingredient salt = new Ingredient("Salt", 0, 0); //Required
-                Ingredient pepper = new Ingredient("Pepper", 0, 0); //Required
-                Ingredient freshCilantro = new Ingredient("Fresh Cilantro", 1, 0); 
-                Ingredient limeWedges = new Ingredient("Lime Wedges", 4, 0); //Required
+                Ingredient chickenBreast = new Ingredient("Chicken Breast", 165, 8, true); //Required
+                Ingredient cherryTomatoes = new Ingredient("Cherry Tomatoes", 18, 1, true); //Required
+                Ingredient mango = new Ingredient("Mango", 60, 3, true); //Required
+                Ingredient mixedGreens = new Ingredient("Mixed Greens", 5, 0, true); //Required
+                Ingredient cucumber = new Ingredient("Cucumber", 8, 0, true); //Required
+                Ingredient redOnion = new Ingredient("Red Onion", 40, 2, true); //Required
+                Ingredient avocado = new Ingredient("Avocado", 240, 10, false); 
+                Ingredient oliveOil = new Ingredient("Olive Oil", 119, 7, true); //Required
+                Ingredient salt = new Ingredient("Salt", 0, 0, true); //Required
+                Ingredient pepper = new Ingredient("Pepper", 0, 0, true); //Required
+                Ingredient freshCilantro = new Ingredient("Fresh Cilantro", 1, 0, false); 
+                Ingredient limeWedges = new Ingredient("Lime Wedges", 4, 0, true); //Required
 
-                ingredients.add(chickenBreast);
-                ingredients.add(cherryTomatoes);
-                ingredients.add(mango);
-                ingredients.add(mixedGreens);
-                ingredients.add(cucumber);
-                ingredients.add(redOnion);
-                ingredients.add(avocado);
-                ingredients.add(oliveOil);
-                ingredients.add(salt);
-                ingredients.add(pepper);
-                ingredients.add(freshCilantro);
-                ingredients.add(limeWedges);
+                requiredIngredients.add(chickenBreast);
+                requiredIngredients.add(cherryTomatoes);
+                requiredIngredients.add(mango);
+                requiredIngredients.add(mixedGreens);
+                requiredIngredients.add(cucumber);
+                requiredIngredients.add(redOnion);
+                optionalIngredients.add(avocado);
+                requiredIngredients.add(oliveOil);
+                requiredIngredients.add(salt);
+                requiredIngredients.add(pepper);
+                optionalIngredients.add(freshCilantro);
+                requiredIngredients.add(limeWedges);
 
                 //Add cookware to the Cookware ArrayList
-                Cookware grillPan = new Cookware("Grill Pan", 5); //Required
-                Cookware tongs = new Cookware("Tongs", 2); //Required
-                Cookware largeBowl = new Cookware("Large Bowl", 4); //Required
-                Cookware smallBowl = new Cookware("Small Bowl", 3); //Required
-                Cookware knife = new Cookware("Knife", 1); //Required
-                Cookware cuttingBoard = new Cookware("Cutting Board", 1); //Required
-                Cookware measuringSpoons = new Cookware("Measuring Spoons", 2); //Required
-                Cookware measuringCups = new Cookware("Measuring Cups", 2); //Required
-                Cookware fork = new Cookware("Fork", 1); //Required
+                Cookware grillPan = new Cookware("Grill Pan", 5, true); //Required
+                Cookware tongs = new Cookware("Tongs", 2, true); //Required
+                Cookware largeBowl = new Cookware("Large Bowl", 4, true); //Required
+                Cookware smallBowl = new Cookware("Small Bowl", 3, true); //Required
+                Cookware knife = new Cookware("Knife", 1, true); //Required
+                Cookware cuttingBoard = new Cookware("Cutting Board", 1, true); //Required
+                Cookware measuringSpoons = new Cookware("Measuring Spoons", 2, true); //Required
+                Cookware measuringCups = new Cookware("Measuring Cups", 2, true); //Required
+                Cookware fork = new Cookware("Fork", 1, true); //Required
 
-                cookware.add(grillPan);
-                cookware.add(tongs);
-                cookware.add(largeBowl);
-                cookware.add(smallBowl);
-                cookware.add(knife);
-                cookware.add(cuttingBoard);
-                cookware.add(measuringSpoons);
-                cookware.add(measuringCups);
-                cookware.add(fork);
+                requiredCookware.add(grillPan);
+                requiredCookware.add(tongs);
+                requiredCookware.add(largeBowl);
+                requiredCookware.add(smallBowl);
+                requiredCookware.add(knife);
+                requiredCookware.add(cuttingBoard);
+                requiredCookware.add(measuringSpoons);
+                requiredCookware.add(measuringCups);
+                requiredCookware.add(fork);
             }
 
             else {
                 System.out.println("Invalid input. Please try again.");
                 return;
             }
-
             
+            // User must now choose the ingredients and cookware for the meal
+            boolean isAllRequirementsMet = false; 
+            while (!isAllRequirementsMet) {
+                selectedIngredients.clear();
+                selectedCookware.clear();  
+                // Ingredients
+                System.out.println("Please choose your ingredients from the list:"); //TODO fix the way it's printed cuz it looks weird
+                for (Ingredient ingredient : requiredIngredients) { 
+                    System.out.println(ingredient.getName());
+                } 
+                
+                System.out.println("Type the name of an ingredient:");
+                 String ingredientName = input.nextLine();
+                  for (Ingredient ingredient : requiredIngredients) {
+                    if (ingredient.getName().equalsIgnoreCase(ingredientName)) { 
+                        selectedIngredients.add(ingredient); 
+                    } 
+                } 
+                
+                //Cookware
+                System.out.println("Please choose your cookware from the list:");
+                for (Cookware cookware : requiredCookware) {
+                    System.out.println(cookware.getType());
+                } System.out.println("Type the name of a cookware:");
+                String cookwareName = input.nextLine();
+                for (Cookware cookware : requiredCookware) {
+                    if (cookware.getType().equalsIgnoreCase(cookwareName)) {
+                        selectedCookware.add(cookware); 
+                    } 
+                }
+                    // Check if all required ingredients and cookware are selected 
+                    isAllRequirementsMet = selectedIngredients.containsAll(requiredIngredients) && selectedCookware.containsAll(requiredCookware); 
+                    if (!isAllRequirementsMet) {
+                        System.out.println("You did not select all required ingredients and cookware. Please try again."); 
+                        } 
+                    } 
+                    System.out.println("Congratulations! You have selected all the required ingredients and cookware for " + mealName + "."); 
+                    
+                    //TODO COOKING STEPS                                         
         }
     }
 }
