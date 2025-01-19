@@ -37,6 +37,6 @@ public class Ingredient {
     }
         
     @Override public String toString() {
-        return null;
+        return name + " (Nutrition: " + nutritionValue + ", Health: " + healthScore + ")";
     } 
 }

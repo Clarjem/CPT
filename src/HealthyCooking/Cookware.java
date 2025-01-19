@@ -33,7 +33,7 @@ public class Cookware {
 
     @Override 
     public String toString() { 
-        return null;
+        return type + " (Health Impact: " + healthImpact + ")"; 
     }
 
     

@@ -189,7 +189,7 @@ public class HealthyCookingGame {
                 requiredIngredients.add(salt);
                 requiredIngredients.add(pepper);
                 optionalIngredients.add(freshCilantro);
-                requiredIngredients.add(limeWedges);
+                requiredIngredients.add(limeWedges); 
 
                 //Add cookware to the Cookware ArrayList
                 Cookware grillPan = new Cookware("Grill Pan", 5, true); //Required
