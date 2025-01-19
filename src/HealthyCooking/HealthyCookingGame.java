@@ -34,6 +34,7 @@ public class HealthyCookingGame {
             while (!isAllRequirementsMet) {
                 System.out.println("Select ingredients:");
                 selectedIngredients = chosenMeal.selectIngredients(input);
+                
                 System.out.println("Select cookware:");
                 selectedCookware = chosenMeal.selectCookware(input);
             
@@ -44,6 +45,8 @@ public class HealthyCookingGame {
             }
 
             System.out.println("Congratulations! You have selected all the required items for " + chosenMeal.getName() + ".");
+            chosenMeal.cookMeal(input, selectedIngredients, selectedCookware);
+             System.out.println("You have successfully created a delicious " + chosenMeal.getName() + "!");
         }
     }
 }
