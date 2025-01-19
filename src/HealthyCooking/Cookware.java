@@ -23,7 +23,7 @@ public class Cookware {
         return type;
     }
 
-    public double getHealthImapct() {
+    public double getHealthImpact() {
         return healthImpact;
     }
     

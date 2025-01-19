@@ -8,11 +8,25 @@ public class Recipe {
     private ArrayList<Cookware> cookware;
     private double cookingTime;
 
-    public Recipe(String name, double cookingTime){
-        this.name = name;
+    public Recipe(int mealChoice){
         this.ingredients = new ArrayList<>();
-        this.cookware = new ArrayList<>();    
-        this.cookingTime = cookingTime;    
+        this.cookware = new ArrayList<>();      
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public ArrayList<Ingredient> getIngredients() {
+        return ingredients;
+    }
+
+    public ArrayList<Cookware> getCookware() {
+        return cookware;
     }
 
     public void addIngredients (Ingredient ingredient){
@@ -31,8 +45,9 @@ public class Recipe {
         this.cookingTime = cookingTime;
     }
 
-    public String toString(){
+    public String toString() { 
         return null;
+
     }
 
 }
