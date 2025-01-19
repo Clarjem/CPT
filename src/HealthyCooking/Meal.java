@@ -343,7 +343,7 @@ public class Meal extends Recipe {
                 System.out.println("Not adding these ingredients means less flavor.");
             }
     
-            for (Ingredient ingredient : selectedIngredients) {
+            for (Ingredient ingredient : selectedIngredients) { //Optional Ingredients
                 if (ingredient.getName().equalsIgnoreCase("Avocado")) {
                     System.out.println("Will you add avocado? (yes/no)");
                     String addAvocado = input.nextLine();
@@ -388,9 +388,256 @@ public class Meal extends Recipe {
     
             System.out.println("You have finished preparing the Quinoa Salad and Roasted Vegetables.");
             System.out.println("Your score for this meal is: " + score);
+
+
+        } else if (getName().equals("Lentil and Sweet Potato Stew")) {
+            System.out.println("Step 1: Rinse the lentils under cold water and drain.");
+            System.out.println("Will you rinse the lentils? (yes/no)");
+            String rinseLentils = input.nextLine();
+            if (rinseLentils.equalsIgnoreCase("yes")) {
+                score += 10;
+                System.out.println("Great choice! Rinsing the lentils helps remove any debris.");
+                System.out.println("*Running Water* 💦💦💦💦💦💦");
+            } else {
+                score -= 5;
+                System.out.println("Skipping the rinsing process means the lentils might have debris.");
+            }
+            
+            System.out.println("Step 2: Peel and cube the sweet potato into small, evenly sized pieces (about 1-inch cubes).");
+            System.out.println("Will you peel and cube the sweet potato? (yes/no)");
+            String cubeSweetPotato = input.nextLine();
+            if (cubeSweetPotato.equalsIgnoreCase("yes")) {
+                score += 10;
+                System.out.println("Great! Cubing the sweet potato ensures even cooking.");
+                System.out.println("Chop chop chop... 🍠");
+            } else {
+                score -= 5;
+                System.out.println("Skipping this step might lead to uneven cooking.");
+            }
+            
+            System.out.println("Step 3: Peel and dice the carrots into similar-sized pieces.");
+            System.out.println("Will you peel and dice the carrots? (yes/no)");
+            String diceCarrots = input.nextLine();
+            if (diceCarrots.equalsIgnoreCase("yes")) {
+                score += 10;
+                System.out.println("Great! Dicing the carrots ensures even cooking.");
+                System.out.println("Chop chop chop... 🥕");
+            } else {
+                score -= 5;
+                System.out.println("Skipping this step might lead to uneven cooking.");
+            }
+            
+            System.out.println("Step 4: Dice the onion and mince the garlic.");
+            System.out.println("Will you dice the onion and mince the garlic? (yes/no)");
+            String diceOnionGarlic = input.nextLine();
+            if (diceOnionGarlic.equalsIgnoreCase("yes")) {
+                score += 10;
+                System.out.println("Great! Dicing the onion and mincing the garlic ensures even cooking.");
+                System.out.println("Chop chop chop... 🧅🧄");
+            } else {
+                score -= 5;
+                System.out.println("Skipping this step might lead to uneven cooking.");
+            }
+            
+            System.out.println("Step 5: Place the large pot on the stovetop over medium heat.");
+            System.out.println("Will you place the pot on the stovetop? (yes/no)");
+            String heatPot = input.nextLine();
+            if (heatPot.equalsIgnoreCase("yes")) {
+            score += 10;
+            System.out.println("Great! Heating the pot ensures even cooking.");
+            } else {
+            score -= 5;
+            System.out.println("Skipping this step might lead to uneven cooking.");
+            }
+            
+            System.out.println("Step 6: Add 1 tablespoon of olive oil and let it warm up for about 30 seconds.");
+            System.out.println("Will you add olive oil and let it warm up? (yes/no)");
+            String addOil = input.nextLine();
+            if (addOil.equalsIgnoreCase("yes")) {
+            score += 10;
+                System.out.println("Great! Warming up the olive oil ensures even cooking.");
+                System.out.println("sizzle... sizzle... (tss tss)");
+            } else {
+                score -= 5;
+                System.out.println("Skipping this step might lead to uneven cooking.");
+            }
+            System.out.println("Step 7: Add the diced onion to the pot and sauté for 3–4 minutes, stirring with the wooden spoon, until the onion becomes soft and translucent.");
+            System.out.println("Will you sauté the diced onion? (yes/no)");
+            String sauteOnion = input.nextLine();
+            if (sauteOnion.equalsIgnoreCase("yes")) {
+                score += 10;
+                System.out.println("Great! Sautéing the onion enhances the flavor.");
+                System.out.println("sizzle... sizzle... (tss tss)");
+            } else {
+                score -= 5;
+                System.out.println("Skipping this step might lead to less flavor.");
+            }
+        
+            System.out.println("Step 8: Stir in the minced garlic and cook for another 1-2 minutes, until fragrant.");
+            System.out.println("Will you cook the minced garlic? (yes/no)");
+            String cookGarlic = input.nextLine();
+            if (cookGarlic.equalsIgnoreCase("yes")) {
+                score += 10;
+                System.out.println("Great! Cooking the garlic enhances the flavor.");
+            } else {
+                score -= 5;
+                System.out.println("Skipping this step might lead to less flavor.");
+            }
+        
+            System.out.println("Step 9: Add the diced carrots and sweet potatoes to the pot. Stir them with the onions and garlic to coat them in the olive oil. Cook for 3 minutes to slightly soften the vegetables.");
+            System.out.println("Will you add the carrots and sweet potatoes? (yes/no)");
+            String addCarrotsSweetPotatoes = input.nextLine();
+            if (addCarrotsSweetPotatoes.equalsIgnoreCase("yes")) {
+                score += 10;
+                System.out.println("Great! Adding these vegetables ensures even cooking.");
+            } else {
+                score -= 5;
+                System.out.println("Skipping this step might lead to uneven cooking.");
+            }
+
+            System.out.println("Step 10: Add the rinsed lentils and the can of diced tomatoes (including the liquid). Stir everything to combine evenly.");
+            System.out.println("Will you add the lentils and diced tomatoes? (yes/no)");
+            String addLentilsTomatoes = input.nextLine();
+            if (addLentilsTomatoes.equalsIgnoreCase("yes")) {
+                score += 10;
+                System.out.println("Great! Adding the lentils and tomatoes ensures even cooking.");
+                } else {
+                score -= 5;
+                System.out.println("Skipping this step might lead to uneven cooking.");
+            }
+            
+            System.out.println("Step 11: Add 4 cups of vegetable broth to the pot. Stir to mix everything well.");
+            System.out.println("Will you add the vegetable broth? (yes/no)");
+            String addBroth = input.nextLine();
+            if (addBroth.equalsIgnoreCase("yes")) {
+                score += 10;
+                System.out.println("Great! Adding the broth ensures even cooking.");
+            } else {
+                score -= 5;
+                System.out.println("Skipping this step might lead to uneven cooking.");
+            }
+            
+            System.out.println("Step 12: Season with a pinch of salt and pepper, adjusting to taste.");
+            System.out.println("Will you season with salt and pepper? (yes/no)");
+            String season = input.nextLine();
+            if (season.equalsIgnoreCase("yes")) {
+                score += 10;
+                System.out.println("Great! Seasoning enhances the flavor.");
+            } else {
+                score -= 5;
+                System.out.println("Skipping this step might lead to less flavor.");
+            }
+
+            System.out.println("Step 13: Bring the mixture to a gentle boil over medium-high heat.");
+            System.out.println("Will you bring the mixture to a boil? (yes/no)");
+            String boil = input.nextLine();
+            if (boil.equalsIgnoreCase("yes")) {
+                score += 10;
+                System.out.println("Great! Bringing the mixture to a boil ensures even cooking.");
+            } else {
+                score -= 5;
+                System.out.println("Skipping this step might lead to uneven cooking.");
+            }
+            
+            System.out.println("Step 14: Once it starts boiling, reduce the heat to low, cover the pot with a lid, and let it simmer for 25-30 minutes. Stir occasionally to prevent sticking and ensure even cooking.");
+            System.out.println("How long will you simmer the stew for? (minutes)");
+            int simmerTime = input.nextInt();
+            input.nextLine(); // Flush the next line
+            if (simmerTime >= 25 && simmerTime <= 30) {
+                score += 20;
+                System.out.println("Perfect simmering time! The stew is cooked just right.");
+            } else if (simmerTime < 15) {
+                score -= 15;
+                System.out.println("The stew is undercooked.");
+            } else if (simmerTime < 25) {
+                score -= 10;
+                System.out.println("The stew is almost cooked, but not quite there.");
+            } else if (simmerTime < 40) {
+                score -= 10;
+                System.out.println("The stew is overcooked.");
+            } else {
+                score -= 25;
+                System.out.println("The stew is over-simmered and mushy.");
+            }
+    
+            System.out.println("Step 15: After 25 minutes, check if the lentils and sweet potatoes are tender.");
+            System.out.println("Are the lentils and sweet potatoes tender? (yes/no)");
+            String checkDoneness = input.nextLine();
+            if (checkDoneness.equalsIgnoreCase("yes")) {
+                score += 10;
+                System.out.println("Fantastic! Your stew is looking great.");
+            } else {
+                System.out.println("Would you like to simmer it for 10 more minutes or keep it as is? (simmer/keep)");
+                String simmerMore = input.nextLine();
+                if (simmerMore.equalsIgnoreCase("simmer")) {
+                    score += 5;
+                    System.out.println("Got it! Letting it simmer for another 10 minutes for perfect tenderness.");
+                } else {
+                    score -= 5;
+                    System.out.println("Alright, but the stew might not be fully tender.");
+                }
+            }
+
+            System.out.println("Step 16: Adjust the seasoning with more salt and pepper if needed.");
+            System.out.println("Will you adjust the seasoning? (yes/no)");
+            String adjustSeasoning = input.nextLine();
+            if (adjustSeasoning.equalsIgnoreCase("yes")) {
+                score += 10;
+                System.out.println("Perfect! Adjusting the seasoning ensures the stew is flavorful.");
+            } else {
+                score -= 5;
+                System.out.println("Skipping this step might lead to less flavor.");
+            }
+
+            System.out.println("Step 17: Ladle the stew into bowls and serve warm. You can pair it with crusty bread or enjoy it on its own!");
+            score += 10;
+            System.out.println("Your Lentil and Sweet Potato Stew is ready to be enjoyed. 🥣");
+
+            for (Ingredient ingredient : selectedIngredients) {
+                if (ingredient.getName().equalsIgnoreCase("Avocado")) {
+                    System.out.println("Will you add avocado? (yes/no)");
+                    String addAvocado = input.nextLine();
+                    if (addAvocado.equalsIgnoreCase("yes")) {
+                        score += 10;
+                        System.out.println("Avocado adds a rich, creamy texture to the stew.");
+                    }
+                }
+
+                if (ingredient.getName().equalsIgnoreCase("Pumpkin Seeds")) {
+                    System.out.println("Will you add pumpkin seeds? (yes/no)");
+                    String addPumpkinSeeds = input.nextLine();
+                    if (addPumpkinSeeds.equalsIgnoreCase("yes")) {
+                        score += 10;
+                        System.out.println("Pumpkin seeds add a nice crunch and extra nutrition.");
+                    }
+                }
+
+                if (ingredient.getName().equalsIgnoreCase("Almonds")) {
+                    System.out.println("Will you add almonds? (yes/no)");
+                    String addAlmonds = input.nextLine();
+                    if (addAlmonds.equalsIgnoreCase("yes")) {
+                        score += 10;
+                        System.out.println("Almonds add a lovely crunch and enhance the flavor.");
+                    }
+                }
+
+                if (ingredient.getName().equalsIgnoreCase("Feta Cheese")) {
+                    System.out.println("Will you add feta cheese? (yes/no)");
+                    String addFetaCheese = input.nextLine();
+                    if (addFetaCheese.equalsIgnoreCase("yes")) {
+                        score += 10;
+                        System.out.println("Feta cheese adds a tangy flavor to the stew.");
+                    }
+                }
+            }
+
+            System.out.println("You have finished preparing the Lentil and Sweet Potato Stew.");
+            System.out.println("Your score for this meal is: " + score);
+        } else if (getName().equals("Grilled Chicken and Mango Salad")) {
+
+            
         }
     
-        // Add similar blocks for other meals with their specific cooking steps and score interactions
     }
     
     private void addOptionalIngredient(Ingredient ingredient) {
