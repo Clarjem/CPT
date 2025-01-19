@@ -633,15 +633,220 @@ public class Meal extends Recipe {
 
             System.out.println("You have finished preparing the Lentil and Sweet Potato Stew.");
             System.out.println("Your score for this meal is: " + score);
-        } else if (getName().equals("Grilled Chicken and Mango Salad")) {
 
+
+        } else if (getName().equals("Grilled Chicken and Mango Salad")) {
+            System.out.println("Step 1: Pat the chicken breasts dry with a paper towel. Season both sides generously with salt and pepper.");
+            System.out.println("Will you pat the chicken breasts dry and season them? (yes/no)");
+            String prepareChicken = input.nextLine();
+            if (prepareChicken.equalsIgnoreCase("yes")) {
+                score += 10;
+                System.out.println("Great choice! Seasoning the chicken adds wonderful flavor.");
+            } else {
+                score -= 5;
+                System.out.println("Skipping this step might lead to bland chicken.");
+            }
+        
+            System.out.println("Step 2: Halve the cherry tomatoes.");
+            System.out.println("Will you halve the cherry tomatoes? (yes/no)");
+            String chopTomatoes = input.nextLine();
+            if (chopTomatoes.equalsIgnoreCase("yes")) {
+                score += 10;
+                System.out.println("Awesome! Halving the cherry tomatoes adds a fresh touch.");
+                System.out.println("Chop chop chop... 🍅");
+            } else {
+                score -= 5;
+                System.out.println("Skipping this step might lead to uneven ingredient distribution.");
+            }
             
+            System.out.println("Step 3: Peel and dice the mango into bite-sized pieces.");
+            System.out.println("Will you peel and dice the mango? (yes/no)");
+            String diceMango = input.nextLine();
+            if (diceMango.equalsIgnoreCase("yes")) {
+                score += 10;
+                System.out.println("Fantastic! Dicing the mango adds a sweet, juicy flavor.");
+                System.out.println("Chop chop chop... 🥭");
+            } else {
+                score -= 5;
+                System.out.println("Skipping this step might lead to uneven ingredient distribution.");
+            }
+            
+            System.out.println("Step 4: Slice the cucumber and red onion thinly.");
+            System.out.println("Will you slice the cucumber and red onion? (yes/no)");
+            String sliceVegetables = input.nextLine();
+            if (sliceVegetables.equalsIgnoreCase("yes")) {
+                score += 10;
+                System.out.println("Great! Slicing the cucumber and red onion adds a crisp, refreshing touch.");
+                System.out.println("Chop chop chop... 🥒🧅");
+            } else {
+                score -= 5;
+                System.out.println("Skipping this step might lead to uneven ingredient distribution.");
+            }
+            
+            System.out.println("Step 5: Rinse and pat the mixed greens dry if needed.");
+            System.out.println("Will you rinse and pat the mixed greens dry? (yes/no)");
+            String prepareGreens = input.nextLine();
+            if (prepareGreens.equalsIgnoreCase("yes")) {
+                score += 10;
+                System.out.println("Perfect! Rinsing and drying the greens ensures they're fresh and crisp.");
+            } else {
+                score -= 5;
+                System.out.println("Skipping this step might lead to less fresh greens.");
+            }
+        
+            System.out.println("Step 6: Place the grill pan over medium-high heat.");
+            System.out.println("Will you place the grill pan on the stovetop? (yes/no)");
+            String heatGrillingPan = input.nextLine();
+            if (heatGrillingPan.equalsIgnoreCase("yes")) {
+                score += 10;
+                System.out.println("Great! Heating the grill pan ensures even cooking.");
+            } else {
+                score -= 5;
+                System.out.println("Skipping this step might lead to uneven cooking.");
+            }
+            
+            System.out.println("Step 7: Brush or drizzle 1 tablespoon of olive oil on the pan to prevent sticking.");
+            System.out.println("Will you brush or drizzle olive oil on the pan? (yes/no)");
+            String oilPan = input.nextLine();
+            if (oilPan.equalsIgnoreCase("yes")) {
+                score += 10;
+                System.out.println("Fantastic! Adding olive oil ensures the chicken doesn't stick.");
+                System.out.println("sizzle... sizzle... (tss tss)");
+            } else {
+                score -= 5;
+                System.out.println("Skipping this step might lead to sticking.");
+            }
+            
+            System.out.println("Step 8: Add the seasoned chicken breasts to the hot grill pan.");
+            System.out.println("Will you add the chicken to the grill pan? (yes/no)");
+            String addChickenToPan = input.nextLine();
+            if (addChickenToPan.equalsIgnoreCase("yes")) {
+                score += 10;
+                System.out.println("Great! Adding the chicken to the hot grill pan ensures even cooking.");
+            } else {
+                score -= 5;
+                System.out.println("Skipping this step might lead to uneven cooking.");
+            }
+            
+            System.out.println("Step 9: Cook for 4–5 minutes on one side without moving them to achieve nice grill marks. Flip using the tongs and cook for another 4–5 minutes, or until the internal temperature reaches 165°F (74°C).");
+            System.out.println("How long will you cook the chicken for on each side? (minutes)");
+            int grillTime = input.nextInt();
+            input.nextLine(); // Consume newline
+            if (grillTime >= 4 && grillTime <= 5) {
+                score += 20;
+                System.out.println("Perfect grilling time! The chicken is cooked just right.");
+                System.out.println("sizzle... sizzle... (tss tss)");
+            } else if (grillTime < 3) {
+                score -= 15;
+                System.out.println("The chicken is undercooked.");
+            } else if (grillTime < 4) {
+                score -= 10;
+                System.out.println("The chicken is almost cooked, but not quite there.");
+            } else if (grillTime < 7) {
+                score -= 10;
+                System.out.println("The chicken is overcooked.");
+            } else {
+                score -= 25;
+                System.out.println("The chicken is burnt.");
+            }
+            
+            System.out.println("Step 10: Remove the chicken from the pan and let it rest for 5 minutes.");
+            System.out.println("Will you let the chicken rest? (yes/no)");
+            String restChicken = input.nextLine();
+            if (restChicken.equalsIgnoreCase("yes")) {
+                score += 10;
+                System.out.println("Great! Letting the chicken rest ensures it stays juicy.");
+            } else {
+                score -= 5;
+                System.out.println("Skipping this step might lead to dry chicken.");
+            }
+
+            System.out.println("Step 11: In a large bowl, combine the mixed greens, halved cherry tomatoes, sliced cucumber, and red onion. Toss gently to distribute evenly.");
+            System.out.println("Will you assemble the salad base? (yes/no)");
+            String assembleSalad = input.nextLine();
+            if (assembleSalad.equalsIgnoreCase("yes")) {
+                score += 10;
+                System.out.println("Fantastic! Assembling the salad base ensures a well-mixed salad.");
+            } else {
+                score -= 5;
+                System.out.println("Skipping this step might lead to uneven ingredient distribution.");
+            }
+            
+            System.out.println("Step 12: In a small bowl, whisk together the remaining 1 tablespoon of olive oil and a squeeze of lime juice. Add a pinch of salt and pepper to taste. (Optional: Add a bit of honey or mustard for a sweeter or tangier flavor.)");
+            System.out.println("Will you prepare the dressing? (yes/no)");
+            String prepareDressing = input.nextLine();
+            if (prepareDressing.equalsIgnoreCase("yes")) {
+                score += 10;
+                System.out.println("Great! Preparing the dressing adds a tangy flavor.");
+            } else {
+                score -= 5;
+                System.out.println("Skipping this step might lead to less flavor.");
+            }
+            
+            System.out.println("Step 13: Once the chicken has rested, slice it into thin strips or bite-sized pieces using the knife and cutting board.");
+            System.out.println("Will you slice the chicken? (yes/no)");
+            String sliceChicken = input.nextLine();
+            if (sliceChicken.equalsIgnoreCase("yes")) {
+                score += 10;
+                System.out.println("Fantastic! Slicing the chicken ensures even distribution.");
+                System.out.println("Chop chop chop... 🍗");
+            } else {
+                score -= 5;
+                System.out.println("Skipping this step might lead to uneven ingredient distribution.");
+            }
+            
+            System.out.println("Step 14: Place the sliced grilled chicken and diced mango on top of the salad base.");
+            System.out.println("Will you top the salad with chicken and mango? (yes/no)");
+            String saladToppings = input.nextLine();
+            if (saladToppings.equalsIgnoreCase("yes")) {
+                score += 10;
+                System.out.println("Perfect! Adding chicken and mango ensures a flavorful salad.");
+            } else {
+                    score -= 5;
+                    System.out.println("Skipping this step might lead to an incomplete salad.");
+            }
+
+            System.out.println("Step 15: Drizzle the dressing over the salad. Toss lightly with a fork to coat the greens evenly.");
+            System.out.println("Will you add the dressing and toss the salad? (yes/no)");
+            String tossSalad = input.nextLine();
+            if (tossSalad.equalsIgnoreCase("yes")) {
+                score += 10;
+                System.out.println("Perfect! Adding the dressing and tossing ensures the flavors are well combined.");
+            } else {
+                score -= 5;
+                System.out.println("Skipping this step might lead to uneven flavor distribution.");
+            }
+
+            for (Ingredient ingredient : selectedIngredients) { // Optional Ingredients
+                if (ingredient.getName().equalsIgnoreCase("Avocado")) {
+                    System.out.println("Will you add avocado? (yes/no)");
+                    String addAvocado = input.nextLine();
+                    if (addAvocado.equalsIgnoreCase("yes")) {
+                        score += 10;
+                        System.out.println("Avocado adds a rich, creamy texture to the salad.");
+                    }
+                }
+
+                if (ingredient.getName().equalsIgnoreCase("Fresh Cilantro")) {
+                    System.out.println("Will you add fresh cilantro? (yes/no)");
+                    String addCilantro = input.nextLine();
+                    if (addCilantro.equalsIgnoreCase("yes")) {
+                        score += 10;
+                        System.out.println("Fresh cilantro adds a burst of flavor to the salad.");
+                    }
+                }
+            }
+
+            System.out.println("Step 16: Serve the Grilled Chicken and Mango Salad immediately and enjoy your delicious creation!");
+            score += 10;
+            System.out.println("Your Grilled Chicken and Mango Salad is ready to be enjoyed. 🥗");
+
+            System.out.println("You have finished preparing the Grilled Chicken and Mango Salad.");
+            System.out.println("Your score for this meal is: " + score);
         }
-    
     }
     
     private void addOptionalIngredient(Ingredient ingredient) {
         optionalIngredients.add(ingredient);
     }
-        
 }
