@@ -6,7 +6,6 @@ public class Recipe {
     private String name;
     private ArrayList<Ingredient> ingredients;
     private ArrayList<Cookware> cookware;
-    private double cookingTime;
 
     public Recipe(int mealChoice){
         this.ingredients = new ArrayList<>();
@@ -35,14 +34,6 @@ public class Recipe {
 
     public void addCookware (Cookware cookware){
         this.cookware.add(cookware);
-    }
-
-    public double getCookingTime() {
-        return cookingTime;
-    }
-
-    public void setCookingTime(double cookingTime) {
-        this.cookingTime = cookingTime;
     }
 
     public String toString() { 

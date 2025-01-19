@@ -11,12 +11,10 @@ package HealthyCooking;
 public class Cookware {
     private String type; // Type of cookware to be used
     private double healthImpact; // Health impact of using this cookware (depends on type of cookware)
-    private boolean required; // If this cookware is required for the recipe //TODO FIX THIS
 
-    public Cookware(String type, double healthImpact, boolean isRequired) { 
+    public Cookware(String type, double healthImpactd) { 
         this.type = type; 
         this.healthImpact = healthImpact;
-        this.required = isRequired;
     } 
     
     public String getType() {
@@ -25,10 +23,6 @@ public class Cookware {
 
     public double getHealthImpact() {
         return healthImpact;
-    }
-    
-    public boolean isRequired() {
-        return required;
     }
 
     @Override 
