@@ -1,4 +1,5 @@
 package HealthyCooking;
+
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Scanner;
@@ -7,27 +8,41 @@ import java.util.Queue;
 /**
  * author: Clarenz Ferrer
  * date: 01/09/2025
- * This class represents a meal with ingredients and cookware.
+ * Meal Class: This class represents a meal with ingredients and cookware (sub class of recipe).
  */
 
 public class Meal extends Recipe {
-    private ArrayList<Ingredient> optionalIngredients;
-    private ArrayList<Cookware> optionalCookware;
-    private Queue<Integer> scoreHistory;
+    private ArrayList<Ingredient> optionalIngredients;     // List of optional ingredients for the meal
+    private ArrayList<Cookware> optionalCookware; // List of optional cookware for the meal
+    private Queue<Integer> scoreHistory;     // Queue to store the score history of the meals cooked
 
+    /**
+     * Constructor to initialize a Meal object based on the meal to cook.
+     * @param mealToCook the meal choice to initialize
+     */
     public Meal(int mealToCook) {
         super(mealToCook);
+        // Initialize the optional ingredients list
         optionalIngredients = new ArrayList<>();
+        // Initialize the optional cookware list
         optionalCookware = new ArrayList<>();
+        // Initialize the score history queue
         scoreHistory = new LinkedList<>();
         
+        // Initialize the meal based on the user's choice
         initializeMeal(mealToCook);
     }
-
+    
+    /**
+     * Initialize the meal based on the user's choice.
+     * @param mealToCook the meal choice to initialize
+     */
     private void initializeMeal(int mealToCook) {
         switch (mealToCook) {
             case 1:
+                // Initialize ingredients and cookware for Quinoa Salad and Roasted Vegetables
                 setName("Quinoa Salad and Roasted Vegetables");
+                // Add required ingredients
                 addIngredients(new Ingredient("Quinoa", 22, 9)); 
                 addIngredients(new Ingredient("Carrots", 41, 3));
                 addIngredients(new Ingredient("Bell Peppers", 31, 1));
@@ -42,10 +57,11 @@ public class Meal extends Recipe {
                 addIngredients(new Ingredient("Parsley", 1, 0));
                 addIngredients(new Ingredient("Feta Cheese", 24, 2));
                 addIngredients(new Ingredient("Chickpeas", 16, 3));
+                // Add optional ingredients
                 addOptionalIngredient(new Ingredient("Avocado", 24, 1));
                 addOptionalIngredient(new Ingredient("Pumpkin Seeds", 15, 3));
                 addOptionalIngredient(new Ingredient("Almonds", 7, 1));
-
+                // Add required cookware
                 addCookware(new Cookware("Baking Sheet", 5));
                 addCookware(new Cookware("Large Bowl", 4));
                 addCookware(new Cookware("Small Bowl", 3));
@@ -57,7 +73,9 @@ public class Meal extends Recipe {
                 addCookware(new Cookware("Measuring Cups", 1));
                 break;
             case 2:
+                // Initialize ingredients and cookware for Lentil and Sweet Potato Stew
                 setName("Lentil and Sweet Potato Stew");
+                // Add required ingredients
                 addIngredients(new Ingredient("Lentils", 23, 10));
                 addIngredients(new Ingredient("Sweet Potatoes", 11, 5));
                 addIngredients(new Ingredient("Carrots", 41, 3));
@@ -68,12 +86,13 @@ public class Meal extends Recipe {
                 addIngredients(new Ingredient("Salt", 0, 0));
                 addIngredients(new Ingredient("Pepper", 0, 0));
                 addIngredients(new Ingredient("Olive Oil", 11, 7));
+                // Add optional ingredients
                 addOptionalIngredient(new Ingredient("Celery", 16, 1));
                 addOptionalIngredient(new Ingredient("Bay Leaves", 5, 0));
                 addOptionalIngredient(new Ingredient("Paprika", 20, 1));
                 addOptionalIngredient(new Ingredient("Lemon Juice", 4, 0));
                 addOptionalIngredient(new Ingredient("Parsley", 1, 0));
-
+                // Add required cookware
                 addCookware(new Cookware("Large Pot", 5));
                 addCookware(new Cookware("Saucepan", 3));
                 addCookware(new Cookware("Knife", 1));
@@ -82,7 +101,9 @@ public class Meal extends Recipe {
                 addCookware(new Cookware("Measuring Spoon", 1));
                 break;
             case 3:
+                // Initialize ingredients and cookware for Grilled Chicken and Mango Salad
                 setName("Grilled Chicken and Mango Salad");
+                // Add required ingredients
                 addIngredients(new Ingredient("Chicken Breast", 16, 8));
                 addIngredients(new Ingredient("Cherry Tomatoes", 18, 1));
                 addIngredients(new Ingredient("Mango", 6, 3));
@@ -93,9 +114,10 @@ public class Meal extends Recipe {
                 addIngredients(new Ingredient("Salt", 0, 0));
                 addIngredients(new Ingredient("Pepper", 0, 0));
                 addIngredients(new Ingredient("Lime Wedges", 4, 0));
+                // Add optional ingredients
                 addOptionalIngredient(new Ingredient("Avocado", 24, 10));
                 addOptionalIngredient(new Ingredient("Fresh Cilantro", 1, 0));
-
+                // Add required cookware
                 addCookware(new Cookware("Grill Pan", 5));
                 addCookware(new Cookware("Tongs", 2));
                 addCookware(new Cookware("Large Bowl", 4));
@@ -107,23 +129,34 @@ public class Meal extends Recipe {
                 addCookware(new Cookware("Fork", 1));
                 break;
             default:
+                // Handle invalid meal choice
                 setName("Unknown");
                 System.out.println("That's an invalid meal choice. Please choose a valid meal next time :)");
                 System.exit(0);
         }
     }
 
+    /**
+     * Display the details of the chosen meal.
+     */
     public void showDetails() {
         System.out.println("You have chosen " + getName() + ".");
     }
 
+    /**
+     * Select ingredients for the meal based on user input.
+     * @param input the Scanner object for user input
+     * @return the list of selected ingredients
+     */
     public ArrayList<Ingredient> selectIngredients(Scanner input) { //ChatGPT gave me the idea to use the Scanner input
         ArrayList<Ingredient> selectedIngredients = new ArrayList<>();
         System.out.println("Required ingredients:");
+        // Display required ingredients
         for (Ingredient ingredient : getIngredients()) {
             System.out.println("- " + ingredient.getName());
         }
         System.out.println("Optional ingredients:");
+        // Display optional ingredients
         for (Ingredient ingredient : optionalIngredients) {
             System.out.println("- " + ingredient.getName());
         }
@@ -132,6 +165,7 @@ public class Meal extends Recipe {
             String ingredientName = input.nextLine().toLowerCase(); // Convert input to lowercase
             if (ingredientName.equals("done")) break;
             boolean found = false;
+            // Check if the ingredient is in the required ingredients list
             for (Ingredient ingredient : getIngredients()) {
                 if (ingredient.getName().toLowerCase().equals(ingredientName)) {
                     selectedIngredients.add(ingredient);
@@ -139,6 +173,7 @@ public class Meal extends Recipe {
                     break;
                 }
             }
+            // Check if the ingredient is in the optional ingredients list
             for (Ingredient ingredient : optionalIngredients) {
                 if (ingredient.getName().toLowerCase().equals(ingredientName)) {
                     selectedIngredients.add(ingredient);
@@ -153,13 +188,20 @@ public class Meal extends Recipe {
         return selectedIngredients;
     }
     
+    /**
+     * Select cookware for the meal based on user input.
+     * @param input the Scanner object for user input
+     * @return the list of selected cookware
+     */
     public ArrayList<Cookware> selectCookware(Scanner input) {
         ArrayList<Cookware> selectedCookware = new ArrayList<>();
         System.out.println("Required cookware:");
+        // Display required cookware
         for (Cookware cookware : getCookware()) {
             System.out.println("- " + cookware.getType());
         }
         System.out.println("Optional cookware: None"); // There's not really any optional cookwares
+        // Display optional cookware
         for (Cookware cookware : optionalCookware) {
             System.out.println("- " + cookware.getType());
         }
@@ -169,6 +211,7 @@ public class Meal extends Recipe {
             String cookwareName = input.nextLine().toLowerCase(); // Convert input to lowercase
             if (cookwareName.equals("done")) break;
             boolean found = false;
+            // Check if the cookware is in the required cookware list
             for (Cookware cookware : getCookware()) {
                 if (cookware.getType().toLowerCase().equals(cookwareName)) {
                     selectedCookware.add(cookware);
@@ -176,6 +219,7 @@ public class Meal extends Recipe {
                     break;
                 }
             }
+            // Check if the cookware is in the optional cookware list
             for (Cookware cookware : optionalCookware) {
                 if (cookware.getType().toLowerCase().equals(cookwareName)) {
                     selectedCookware.add(cookware);
@@ -190,18 +234,27 @@ public class Meal extends Recipe {
         return selectedCookware;
     }
     
+    /**
+     * Verify if the selected ingredients and cookware meet the requirements.
+     * @param ingredients the list of selected ingredients
+     * @param cookware the list of selected cookware
+     * @return true if the selection is valid, false otherwise
+     */
     public boolean verifySelection(ArrayList<Ingredient> ingredients, ArrayList<Cookware> cookware) {
         ArrayList<String> selectedIngredients = new ArrayList<>();
         ArrayList<String> selectedCookware = new ArrayList<>();
     
+        // Convert selected ingredients to lowercase
         for (Ingredient ingredient : ingredients) {
             selectedIngredients.add(ingredient.getName().toLowerCase());
         }
     
+        // Convert selected cookware to lowercase
         for (Cookware cookwareItem : cookware) {
             selectedCookware.add(cookwareItem.getType().toLowerCase());
         }
     
+        // Check if all required ingredients are selected
         for (Ingredient requiredIngredient : getIngredients()) {
             if (!selectedIngredients.contains(requiredIngredient.getName().toLowerCase())) {
                 System.out.println("Missing required ingredient: " + requiredIngredient.getName());
@@ -209,6 +262,7 @@ public class Meal extends Recipe {
             }
         }
     
+        // Check if all required cookware are selected
         for (Cookware requiredCookware : getCookware()) {
             if (!selectedCookware.contains(requiredCookware.getType().toLowerCase())) {
                 System.out.println("Missing required cookware: " + requiredCookware.getType());
@@ -218,6 +272,12 @@ public class Meal extends Recipe {
         return true;
     }    
 
+    /**
+     * Cook the meal based on the selected ingredients and cookware.
+     * @param input the Scanner object for user input
+     * @param selectedIngredients the list of selected ingredients
+     * @param selectedCookware the list of selected cookware
+     */
     public void cookMeal(Scanner input, ArrayList<Ingredient> selectedIngredients, ArrayList<Cookware> selectedCookware) {
         // Ask if the user wants to see previous scores
         System.out.println("Do you want to see your previous scores? (yes/no)");
@@ -233,28 +293,32 @@ public class Meal extends Recipe {
         int totalHealthScore = 0;
         int totalHealthImpact = 0;
     
-        if (getName().equals("Quinoa Salad and Roasted Vegetables")) { 
-            for (Ingredient ingredient : selectedIngredients) { // Calculate the total nutrition and health score of selected ingredients
-                totalNutrition += ingredient.getNutritionValue(); 
-                totalHealthScore += ingredient.getHealthScore(); 
-            }
-                for (Cookware cookware : selectedCookware) {
-                totalHealthImpact += cookware.getHealthImpact(); // Calculate the total health impact of selected cookware
-            }
+        // Calculate the total nutrition and health score of selected ingredients
+        for (Ingredient ingredient : selectedIngredients) {
+            totalNutrition += ingredient.getNutritionValue(); 
+            totalHealthScore += ingredient.getHealthScore(); 
+        }
+        // Calculate the total health impact of selected cookware
+        for (Cookware cookware : selectedCookware) {
+            totalHealthImpact += cookware.getHealthImpact();
+        }
 
+        // Cooking steps for Quinoa Salad and Roasted Vegetables
+        if (getName().equals("Quinoa Salad and Roasted Vegetables")) { 
+            // Step 1: Rinse quinoa
             System.out.println("Step 1: Rinse quinoa under cold water.");
             System.out.println("Will you rinse the quinoa? (yes/no)");
             String rinse = input.nextLine();
             if (rinse.equalsIgnoreCase("yes")) {
                 score += 10;
                 System.out.println("Great choice! Rinsing the quinoa helps remove bitterness.");
-                
                 System.out.println("*Running Water* ");
             } else {
                 score -= 5;
                 System.out.println("Skipping the rinsing process means the quinoa might taste bitter.");
             }
     
+            // Step 2: Cook quinoa
             System.out.println("Step 2: In a medium saucepan, combine quinoa and water or vegetable broth. Bring to a boil, then reduce heat to low. Cover and simmer for about 15 minutes or until the liquid is absorbed. Fluff with a fork and set aside.");
             System.out.println("Will you use a saucepan to cook the quinoa? (yes/no)");
             String useSaucepan = input.nextLine();
@@ -286,6 +350,7 @@ public class Meal extends Recipe {
                 System.out.println("You've burnt your quinoa.");
             }
     
+            // Step 3: Preheat oven
             System.out.println("Step 3: Preheat the oven to 400°F (200°C).");
             System.out.println("Will you preheat the oven? (yes/no)");
             String preheatOven = input.nextLine();
@@ -298,6 +363,7 @@ public class Meal extends Recipe {
                 System.out.println("Not preheating the oven can lead to uneven roasting.");
             }
     
+            // Step 4: Prepare vegetables
             System.out.println("Step 4: Spread diced carrots, bell pepper, zucchini, cherry tomatoes, red onion, and sweet potato on a large baking sheet. Drizzle with olive oil, season generously with salt and pepper, and toss to coat evenly.");
             System.out.println("Will you use a baking sheet to prepare the vegetables? (yes/no)");
             String useBakingSheet = input.nextLine();
@@ -309,6 +375,7 @@ public class Meal extends Recipe {
                 System.out.println("Not using a baking sheet might lead to uneven roasting.");
             }
     
+            // Step 5: Roast vegetables
             System.out.println("Step 5: Roast vegetables in the oven for 25-30 minutes, stirring halfway, until tender and slightly caramelized.");
             System.out.println("How long will you roast the vegetables for? (minutes)");
             int roastVeggiesTime = input.nextInt();
@@ -331,6 +398,7 @@ public class Meal extends Recipe {
                 System.out.println("Wow! You've successfully created charcoal.");
             }
     
+            // Step 6: Add chickpeas
             System.out.println("Step 6: Add the rinsed and drained chickpeas to the baking sheet during the last 10 minutes of roasting to warm them up and give them a slight crisp.");
             System.out.println("Will you add the chickpeas correctly? (yes/no)");
             String prepareChickpeas = input.nextLine();
@@ -343,6 +411,7 @@ public class Meal extends Recipe {
                 System.out.println("Not adding the chickpeas correctly will affect the texture.");
             }
     
+            // Step 7: Combine ingredients
             System.out.println("Step 7: In a large mixing bowl, combine the cooked quinoa, roasted vegetables, and chickpeas.");
             System.out.println("Will you use a large mixing bowl to combine the ingredients? (yes/no)");
             String useMixingBowl = input.nextLine();
@@ -354,6 +423,7 @@ public class Meal extends Recipe {
                 System.out.println("Not using a large mixing bowl might lead to uneven mixing.");
             }
     
+            // Step 8: Add final ingredients
             System.out.println("Step 8: Add lemon juice, chopped parsley, and crumbled feta cheese. Toss everything gently to combine.");
             System.out.println("Will you add lemon juice, parsley, and feta cheese? (yes/no)");
             String addIngredients = input.nextLine();
@@ -365,7 +435,8 @@ public class Meal extends Recipe {
                 System.out.println("Not adding these ingredients means less flavor.");
             }
     
-            for (Ingredient ingredient : selectedIngredients) { //Optional Ingredients
+            // Optional ingredients
+            for (Ingredient ingredient : selectedIngredients) { 
                 if (ingredient.getName().equalsIgnoreCase("Avocado")) {
                     System.out.println("Will you add avocado? (yes/no)");
                     String addAvocado = input.nextLine();
@@ -403,6 +474,7 @@ public class Meal extends Recipe {
                 }
             }
     
+            // Step 9: Serve
             System.out.println("Step 9: Serve warm, at room temperature, or chilled, depending on your preference.");
             System.out.println("Serving the salad! ");
             score += 10;
@@ -410,14 +482,17 @@ public class Meal extends Recipe {
 
 
         } else if (getName().equals("Lentil and Sweet Potato Stew")) {
-            for (Ingredient ingredient : selectedIngredients) { // Calculate the total nutrition and health score of selected ingredients
+            // Calculate the total nutrition and health score of selected ingredients
+            for (Ingredient ingredient : selectedIngredients) { 
                 totalNutrition += ingredient.getNutritionValue(); 
                 totalHealthScore += ingredient.getHealthScore(); 
             }
-                for (Cookware cookware : selectedCookware) {
-                totalHealthImpact += cookware.getHealthImpact(); // Calculate the total health impact of selected cookware
+            // Calculate the total health impact of selected cookware
+            for (Cookware cookware : selectedCookware) {
+                totalHealthImpact += cookware.getHealthImpact();
             }
 
+            // Step 1: Rinse lentils
             System.out.println("Step 1: Rinse the lentils under cold water and drain.");
             System.out.println("Will you rinse the lentils? (yes/no)");
             String rinseLentils = input.nextLine();
@@ -430,6 +505,7 @@ public class Meal extends Recipe {
                 System.out.println("Skipping the rinsing process means the lentils might have debris.");
             }
             
+            // Step 2: Cube sweet potato
             System.out.println("Step 2: Peel and cube the sweet potato into small, evenly sized pieces (about 1-inch cubes).");
             System.out.println("Will you peel and cube the sweet potato? (yes/no)");
             String cubeSweetPotato = input.nextLine();
@@ -442,6 +518,7 @@ public class Meal extends Recipe {
                 System.out.println("Skipping this step might lead to uneven cooking.");
             }
             
+            // Step 3: Dice carrots
             System.out.println("Step 3: Peel and dice the carrots into similar-sized pieces.");
             System.out.println("Will you peel and dice the carrots? (yes/no)");
             String diceCarrots = input.nextLine();
@@ -454,6 +531,7 @@ public class Meal extends Recipe {
                 System.out.println("Skipping this step might lead to uneven cooking.");
             }
             
+            // Step 4: Dice onion and mince garlic
             System.out.println("Step 4: Dice the onion and mince the garlic.");
             System.out.println("Will you dice the onion and mince the garlic? (yes/no)");
             String diceOnionGarlic = input.nextLine();
@@ -466,28 +544,32 @@ public class Meal extends Recipe {
                 System.out.println("Skipping this step might lead to uneven cooking.");
             }
             
+            // Step 5: Heat pot
             System.out.println("Step 5: Place the large pot on the stovetop over medium heat.");
             System.out.println("Will you place the pot on the stovetop? (yes/no)");
             String heatPot = input.nextLine();
             if (heatPot.equalsIgnoreCase("yes")) {
-            score += 10;
-            System.out.println("Great! Heating the pot ensures even cooking.");
+                score += 10;
+                System.out.println("Great! Heating the pot ensures even cooking.");
             } else {
-            score -= 5;
-            System.out.println("Skipping this step might lead to uneven cooking.");
+                score -= 5;
+                System.out.println("Skipping this step might lead to uneven cooking.");
             }
             
+            // Step 6: Add olive oil
             System.out.println("Step 6: Add 1 tablespoon of olive oil and let it warm up for about 30 seconds.");
             System.out.println("Will you add olive oil and let it warm up? (yes/no)");
             String addOil = input.nextLine();
             if (addOil.equalsIgnoreCase("yes")) {
-            score += 10;
+                score += 10;
                 System.out.println("Great! Warming up the olive oil ensures even cooking.");
                 System.out.println("sizzle... sizzle... (tss tss)");
             } else {
                 score -= 5;
                 System.out.println("Skipping this step might lead to uneven cooking.");
             }
+            
+            // Step 7: Sauté onion
             System.out.println("Step 7: Add the diced onion to the pot and sauté for 3-4 minutes, stirring with the wooden spoon, until the onion becomes soft and translucent.");
             System.out.println("Will you sauté the diced onion? (yes/no)");
             String sauteOnion = input.nextLine();
@@ -500,6 +582,7 @@ public class Meal extends Recipe {
                 System.out.println("Skipping this step might lead to less flavor.");
             }
         
+            // Step 8: Cook garlic
             System.out.println("Step 8: Stir in the minced garlic and cook for another 1-2 minutes, until fragrant.");
             System.out.println("Will you cook the minced garlic? (yes/no)");
             String cookGarlic = input.nextLine();
@@ -511,6 +594,7 @@ public class Meal extends Recipe {
                 System.out.println("Skipping this step might lead to less flavor.");
             }
         
+            // Step 9: Add carrots and sweet potatoes
             System.out.println("Step 9: Add the diced carrots and sweet potatoes to the pot. Stir them with the onions and garlic to coat them in the olive oil. Cook for 3 minutes to slightly soften the vegetables.");
             System.out.println("Will you add the carrots and sweet potatoes? (yes/no)");
             String addCarrotsSweetPotatoes = input.nextLine();
@@ -522,17 +606,19 @@ public class Meal extends Recipe {
                 System.out.println("Skipping this step might lead to uneven cooking.");
             }
 
+            // Step 10: Add lentils and tomatoes
             System.out.println("Step 10: Add the rinsed lentils and the can of diced tomatoes (including the liquid). Stir everything to combine evenly.");
             System.out.println("Will you add the lentils and diced tomatoes? (yes/no)");
             String addLentilsTomatoes = input.nextLine();
             if (addLentilsTomatoes.equalsIgnoreCase("yes")) {
                 score += 10;
                 System.out.println("Great! Adding the lentils and tomatoes ensures even cooking.");
-                } else {
+            } else {
                 score -= 5;
                 System.out.println("Skipping this step might lead to uneven cooking.");
             }
             
+            // Step 11: Add vegetable broth
             System.out.println("Step 11: Add 4 cups of vegetable broth to the pot. Stir to mix everything well.");
             System.out.println("Will you add the vegetable broth? (yes/no)");
             String addBroth = input.nextLine();
@@ -544,6 +630,7 @@ public class Meal extends Recipe {
                 System.out.println("Skipping this step might lead to uneven cooking.");
             }
             
+            // Step 12: Season with salt and pepper
             System.out.println("Step 12: Season with a pinch of salt and pepper, adjusting to taste.");
             System.out.println("Will you season with salt and pepper? (yes/no)");
             String season = input.nextLine();
@@ -555,6 +642,7 @@ public class Meal extends Recipe {
                 System.out.println("Skipping this step might lead to less flavor.");
             }
 
+            // Step 13: Bring to boil
             System.out.println("Step 13: Bring the mixture to a gentle boil over medium-high heat.");
             System.out.println("Will you bring the mixture to a boil? (yes/no)");
             String boil = input.nextLine();
@@ -566,6 +654,7 @@ public class Meal extends Recipe {
                 System.out.println("Skipping this step might lead to uneven cooking.");
             }
             
+            // Step 14: Simmer
             System.out.println("Step 14: Once it starts boiling, reduce the heat to low, cover the pot with a lid, and let it simmer for 25-30 minutes. Stir occasionally to prevent sticking and ensure even cooking.");
             System.out.println("How long will you simmer the stew for? (minutes)");
             int simmerTime = input.nextInt();
@@ -587,6 +676,7 @@ public class Meal extends Recipe {
                 System.out.println("The stew is over-simmered and mushy.");
             }
     
+            // Step 15: Check doneness
             System.out.println("Step 15: After 25 minutes, check if the lentils and sweet potatoes are tender.");
             System.out.println("Are the lentils and sweet potatoes tender? (yes/no)");
             String checkDoneness = input.nextLine();
@@ -605,6 +695,7 @@ public class Meal extends Recipe {
                 }
             }
 
+            // Step 16: Adjust seasoning
             System.out.println("Step 16: Adjust the seasoning with more salt and pepper if needed.");
             System.out.println("Will you adjust the seasoning? (yes/no)");
             String adjustSeasoning = input.nextLine();
@@ -616,6 +707,7 @@ public class Meal extends Recipe {
                 System.out.println("Skipping this step might lead to less flavor.");
             }
 
+            // Optional ingredients
             for (Ingredient ingredient : selectedIngredients) {
                 if (ingredient.getName().equalsIgnoreCase("Avocado")) {
                     System.out.println("Will you add avocado? (yes/no)");
@@ -653,6 +745,7 @@ public class Meal extends Recipe {
                     }
                 }
 
+            // Step 17: Serve
             System.out.println("Step 17: Ladle the stew into bowls and serve warm. You can pair it with crusty bread or enjoy it on its own!");
             score += 10;
             System.out.println("Your Lentil and Sweet Potato Stew is ready to be enjoyed.");
@@ -660,14 +753,17 @@ public class Meal extends Recipe {
 
 
         } else if (getName().equals("Grilled Chicken and Mango Salad")) {
-            for (Ingredient ingredient : selectedIngredients) { // Calculate the total nutrition and health score of selected ingredients
+            // Calculate the total nutrition and health score of selected ingredients
+            for (Ingredient ingredient : selectedIngredients) { 
                 totalNutrition += ingredient.getNutritionValue(); 
                 totalHealthScore += ingredient.getHealthScore(); 
             }
-                for (Cookware cookware : selectedCookware) {
-                totalHealthImpact += cookware.getHealthImpact(); // Calculate the total health impact of selected cookware
+            // Calculate the total health impact of selected cookware
+            for (Cookware cookware : selectedCookware) {
+                totalHealthImpact += cookware.getHealthImpact();
             }
 
+            // Step 1: Prepare chicken
             System.out.println("Step 1: Pat the chicken breasts dry with a paper towel. Season both sides generously with salt and pepper.");
             System.out.println("Will you pat the chicken breasts dry and season them? (yes/no)");
             String prepareChicken = input.nextLine();
@@ -679,6 +775,7 @@ public class Meal extends Recipe {
                 System.out.println("Skipping this step might lead to bland chicken.");
             }
         
+            // Step 2: Halve cherry tomatoes
             System.out.println("Step 2: Halve the cherry tomatoes.");
             System.out.println("Will you halve the cherry tomatoes? (yes/no)");
             String chopTomatoes = input.nextLine();
@@ -691,6 +788,7 @@ public class Meal extends Recipe {
                 System.out.println("Skipping this step might lead to uneven ingredient distribution.");
             }
             
+            // Step 3: Dice mango
             System.out.println("Step 3: Peel and dice the mango into bite-sized pieces.");
             System.out.println("Will you peel and dice the mango? (yes/no)");
             String diceMango = input.nextLine();
@@ -703,6 +801,7 @@ public class Meal extends Recipe {
                 System.out.println("Skipping this step might lead to uneven ingredient distribution.");
             }
             
+            // Step 4: Slice cucumber and red onion
             System.out.println("Step 4: Slice the cucumber and red onion thinly.");
             System.out.println("Will you slice the cucumber and red onion? (yes/no)");
             String sliceVegetables = input.nextLine();
@@ -715,6 +814,7 @@ public class Meal extends Recipe {
                 System.out.println("Skipping this step might lead to uneven ingredient distribution.");
             }
             
+            // Step 5: Prepare mixed greens
             System.out.println("Step 5: Rinse and pat the mixed greens dry if needed.");
             System.out.println("Will you rinse and pat the mixed greens dry? (yes/no)");
             String prepareGreens = input.nextLine();
@@ -726,6 +826,7 @@ public class Meal extends Recipe {
                 System.out.println("Skipping this step might lead to less fresh greens.");
             }
         
+            // Step 6: Heat grill pan
             System.out.println("Step 6: Place the grill pan over medium-high heat.");
             System.out.println("Will you place the grill pan on the stovetop? (yes/no)");
             String heatGrillingPan = input.nextLine();
@@ -737,6 +838,7 @@ public class Meal extends Recipe {
                 System.out.println("Skipping this step might lead to uneven cooking.");
             }
             
+            // Step 7: Add olive oil to pan
             System.out.println("Step 7: Brush or drizzle 1 tablespoon of olive oil on the pan to prevent sticking.");
             System.out.println("Will you brush or drizzle olive oil on the pan? (yes/no)");
             String oilPan = input.nextLine();
@@ -749,6 +851,7 @@ public class Meal extends Recipe {
                 System.out.println("Skipping this step might lead to sticking.");
             }
             
+            // Step 8: Add chicken to pan
             System.out.println("Step 8: Add the seasoned chicken breasts to the hot grill pan.");
             System.out.println("Will you add the chicken to the grill pan? (yes/no)");
             String addChickenToPan = input.nextLine();
@@ -760,10 +863,11 @@ public class Meal extends Recipe {
                 System.out.println("Skipping this step might lead to uneven cooking.");
             }
             
+            // Step 9: Cook chicken
             System.out.println("Step 9: Cook for 4-5 minutes on one side without moving them to achieve nice grill marks. Flip using the tongs and cook for another 4–5 minutes, or until the internal temperature reaches 165°F (74°C).");
             System.out.println("How long will you cook the chicken for on each side? (minutes)");
             int grillTime = input.nextInt();
-            input.nextLine(); // Consume newline
+            input.nextLine(); // Flush the next line
             if (grillTime >= 4 && grillTime <= 5) {
                 score += 20;
                 System.out.println("Perfect grilling time! The chicken is cooked just right.");
@@ -782,6 +886,7 @@ public class Meal extends Recipe {
                 System.out.println("The chicken is burnt.");
             }
             
+            // Step 10: Rest chicken
             System.out.println("Step 10: Remove the chicken from the pan and let it rest for 5 minutes.");
             System.out.println("Will you let the chicken rest? (yes/no)");
             String restChicken = input.nextLine();
@@ -793,6 +898,7 @@ public class Meal extends Recipe {
                 System.out.println("Skipping this step might lead to dry chicken.");
             }
 
+            // Step 11: Assemble salad base
             System.out.println("Step 11: In a large bowl, combine the mixed greens, halved cherry tomatoes, sliced cucumber, and red onion. Toss gently to distribute evenly.");
             System.out.println("Will you assemble the salad base? (yes/no)");
             String assembleSalad = input.nextLine();
@@ -804,6 +910,7 @@ public class Meal extends Recipe {
                 System.out.println("Skipping this step might lead to uneven ingredient distribution.");
             }
             
+            // Step 12: Prepare dressing
             System.out.println("Step 12: In a small bowl, whisk together the remaining 1 tablespoon of olive oil and a squeeze of lime juice. Add a pinch of salt and pepper to taste. (Optional: Add a bit of honey or mustard for a sweeter or tangier flavor.)");
             System.out.println("Will you prepare the dressing? (yes/no)");
             String prepareDressing = input.nextLine();
@@ -815,6 +922,7 @@ public class Meal extends Recipe {
                 System.out.println("Skipping this step might lead to less flavor.");
             }
             
+            // Step 13: Slice chicken
             System.out.println("Step 13: Once the chicken has rested, slice it into thin strips or bite-sized pieces using the knife and cutting board.");
             System.out.println("Will you slice the chicken? (yes/no)");
             String sliceChicken = input.nextLine();
@@ -827,6 +935,7 @@ public class Meal extends Recipe {
                 System.out.println("Skipping this step might lead to uneven ingredient distribution.");
             }
             
+            // Step 14: Add toppings
             System.out.println("Step 14: Place the sliced grilled chicken and diced mango on top of the salad base.");
             System.out.println("Will you top the salad with chicken and mango? (yes/no)");
             String saladToppings = input.nextLine();
@@ -834,10 +943,11 @@ public class Meal extends Recipe {
                 score += 10;
                 System.out.println("Perfect! Adding chicken and mango ensures a flavorful salad.");
             } else {
-                    score -= 5;
-                    System.out.println("Skipping this step might lead to an incomplete salad.");
+                score -= 5;
+                System.out.println("Skipping this step might lead to an incomplete salad.");
             }
 
+            // Step 15: Add dressing and toss
             System.out.println("Step 15: Drizzle the dressing over the salad. Toss lightly with a fork to coat the greens evenly.");
             System.out.println("Will you add the dressing and toss the salad? (yes/no)");
             String tossSalad = input.nextLine();
@@ -849,7 +959,8 @@ public class Meal extends Recipe {
                 System.out.println("Skipping this step might lead to uneven flavor distribution.");
             }
 
-            for (Ingredient ingredient : selectedIngredients) { // Optional Ingredients
+            // Optional ingredients
+            for (Ingredient ingredient : selectedIngredients) { 
                 if (ingredient.getName().equalsIgnoreCase("Avocado")) {
                     System.out.println("Will you add avocado? (yes/no)");
                     String addAvocado = input.nextLine();
@@ -869,16 +980,18 @@ public class Meal extends Recipe {
                 }
             }
 
+            // Step 16: Serve
             System.out.println("Step 16: Serve the Grilled Chicken and Mango Salad immediately and enjoy your delicious creation!");
             score += 10;
             System.out.println("Your Grilled Chicken and Mango Salad is ready to be enjoyed. ");
         }
 
+        // Deduct points for missing optional ingredients
         for (Ingredient ingredient : optionalIngredients) { 
             if (!selectedIngredients.contains(ingredient)) { 
                 score -= 10; // Deducts points to make the scoring more balanced
-                } 
-            }
+            } 
+        }
 
         // Calculate the grades 
         String nutritionGrade = calculateNutritionValueGrade(totalNutrition); 
@@ -898,14 +1011,22 @@ public class Meal extends Recipe {
         feedbackProvider(overallGrade); // Provide feedback based on overall grade
 
         scoreHistory.add(score); // Record the score in the score history
-        }
+    }
     
+    /**
+     * Display the score history of the meals cooked.
+     */
     public void displayScoreHistory(){
         System.out.println("Score History: ");
         for (Integer recordedScore : scoreHistory) {
             System.out.println(recordedScore);
         }
     }
+
+    /**
+     * Provide feedback based on the overall grade.
+     * @param overallGrade the overall grade of the meal
+     */
     private void feedbackProvider(String overallGrade){ 
         if (overallGrade.equals("S")) { 
             System.out.println("Outstanding performance! You are a culinary master."); 
@@ -923,11 +1044,19 @@ public class Meal extends Recipe {
         
     }
 
+    /**
+     * Add an optional ingredient to the meal.
+     * @param ingredient the optional ingredient to add
+     */
     private void addOptionalIngredient(Ingredient ingredient) {
         optionalIngredients.add(ingredient);
     }
 
-    // Separate grading methods for each category 
+    /**
+     * Calculate the nutrition value grade based on the value.
+     * @param value the nutrition value
+     * @return the grade for the nutrition value
+     */
     private String calculateNutritionValueGrade(int value) {
         if (value >= 250) return "S"; 
         else if (value >= 220) return "A+";
@@ -944,6 +1073,11 @@ public class Meal extends Recipe {
         else return "F";
     }
     
+    /**
+     * Calculate the health score grade based on the value.
+     * @param value the health score value
+     * @return the grade for the health score
+     */
     private String calculateHealthScoreGrade(int value) {
         if (value >= 30) return "S";
         else if (value >= 26) return "A+";
@@ -959,6 +1093,11 @@ public class Meal extends Recipe {
         else return "F";
     }
     
+    /**
+     * Calculate the health impact grade based on the value.
+     * @param value the health impact value
+     * @return the grade for the health impact
+     */
     private String calculateHealthImpactGrade(int value) {
         if (value >= 20) return "S"; 
         else if (value >= 18) return "A+";
@@ -973,6 +1112,14 @@ public class Meal extends Recipe {
         else return "F";
     }    
 
+    /**
+     * Calculate the overall grade based on the score and individual grades.
+     * @param score the score of the meal
+     * @param nutritionGrade the nutrition value grade
+     * @param healthScoreGrade the health score grade
+     * @param healthImpactGrade the health impact grade
+     * @return the overall grade for the meal
+     */
     private String calculateOverallGrade(int score, String nutritionGrade, String healthScoreGrade, String healthImpactGrade) {
         String[] grades = {nutritionGrade, healthScoreGrade, healthImpactGrade};
         int totalGradeValue = 0;
@@ -1060,4 +1207,4 @@ public class Meal extends Recipe {
             return "F";
         }
     }
-}    
+}
