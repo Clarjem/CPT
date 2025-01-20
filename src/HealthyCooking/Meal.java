@@ -1,7 +1,8 @@
 package HealthyCooking;
-
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.Scanner;
+import java.util.Queue;
 
 /**
  * author: Clarenz Ferrer
@@ -12,11 +13,14 @@ import java.util.Scanner;
 public class Meal extends Recipe {
     private ArrayList<Ingredient> optionalIngredients;
     private ArrayList<Cookware> optionalCookware;
+    private Queue<Integer> scoreHistory;
 
     public Meal(int mealToCook) {
         super(mealToCook);
         optionalIngredients = new ArrayList<>();
         optionalCookware = new ArrayList<>();
+        scoreHistory = new LinkedList<>();
+        
         initializeMeal(mealToCook);
     }
 
@@ -113,7 +117,7 @@ public class Meal extends Recipe {
         System.out.println("You have chosen " + getName() + ".");
     }
 
-    public ArrayList<Ingredient> selectIngredients(Scanner input) { //ChatGPT gave me the idea to add the Scanner input
+    public ArrayList<Ingredient> selectIngredients(Scanner input) { //ChatGPT gave me the idea to use the Scanner input
         ArrayList<Ingredient> selectedIngredients = new ArrayList<>();
         System.out.println("Required ingredients:");
         for (Ingredient ingredient : getIngredients()) {
@@ -215,6 +219,15 @@ public class Meal extends Recipe {
     }    
 
     public void cookMeal(Scanner input, ArrayList<Ingredient> selectedIngredients, ArrayList<Cookware> selectedCookware) {
+        // Ask if the user wants to see previous scores
+        System.out.println("Do you want to see your previous scores? (yes/no)");
+        String showScores = input.nextLine();
+        if (showScores.equalsIgnoreCase("yes")) {
+            displayScoreHistory();
+        } else {
+            System.out.println("Let's start cooking!");
+        }
+        
         int score = 0;
         int totalNutrition = 0;
         int totalHealthScore = 0;
@@ -882,7 +895,18 @@ public class Meal extends Recipe {
         System.out.println("Health Impact Grade: " + healthImpactGrade); 
         System.out.println("Overall Grade: " + overallGrade); 
 
-        // Provide feedback messages
+        feedbackProvider(overallGrade); // Provide feedback based on overall grade
+
+        scoreHistory.add(score); // Record the score in the score history
+        }
+    
+    public void displayScoreHistory(){
+        System.out.println("Score History: ");
+        for (Integer recordedScore : scoreHistory) {
+            System.out.println(recordedScore);
+        }
+    }
+    private void feedbackProvider(String overallGrade){ 
         if (overallGrade.equals("S")) { 
             System.out.println("Outstanding performance! You are a culinary master."); 
         } else if (overallGrade.startsWith("A")) { 
