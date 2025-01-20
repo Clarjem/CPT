@@ -24,22 +24,22 @@ public class Meal extends Recipe {
         switch (mealToCook) {
             case 1:
                 setName("Quinoa Salad and Roasted Vegetables");
-                addIngredients(new Ingredient("Quinoa", 222, 9)); //TODO remove the isrequired stuff later
+                addIngredients(new Ingredient("Quinoa", 22, 9)); 
                 addIngredients(new Ingredient("Carrots", 41, 3));
                 addIngredients(new Ingredient("Bell Peppers", 31, 1));
                 addIngredients(new Ingredient("Zucchini", 20, 1));
                 addIngredients(new Ingredient("Cherry Tomatoes", 18, 1));
                 addIngredients(new Ingredient("Red Onion", 40, 2));
-                addIngredients(new Ingredient("Sweet Potatoes", 112, 5));
-                addIngredients(new Ingredient("Olive Oil", 119, 7));
+                addIngredients(new Ingredient("Sweet Potatoes", 11, 5));
+                addIngredients(new Ingredient("Olive Oil", 19, 7));
                 addIngredients(new Ingredient("Salt", 0, 0));
                 addIngredients(new Ingredient("Pepper", 0, 0));
                 addIngredients(new Ingredient("Lemon Juice", 4, 0));
                 addIngredients(new Ingredient("Parsley", 1, 0));
-                addIngredients(new Ingredient("Feta Cheese", 264, 21));
-                addIngredients(new Ingredient("Chickpeas", 164, 3));
-                addOptionalIngredient(new Ingredient("Avocado", 240, 10));
-                addOptionalIngredient(new Ingredient("Pumpkin Seeds", 153, 13));
+                addIngredients(new Ingredient("Feta Cheese", 24, 2));
+                addIngredients(new Ingredient("Chickpeas", 16, 3));
+                addOptionalIngredient(new Ingredient("Avocado", 24, 1));
+                addOptionalIngredient(new Ingredient("Pumpkin Seeds", 15, 3));
                 addOptionalIngredient(new Ingredient("Almonds", 7, 1));
 
                 addCookware(new Cookware("Baking Sheet", 5));
@@ -54,16 +54,16 @@ public class Meal extends Recipe {
                 break;
             case 2:
                 setName("Lentil and Sweet Potato Stew");
-                addIngredients(new Ingredient("Lentils", 230, 10));
-                addIngredients(new Ingredient("Sweet Potatoes", 112, 5));
+                addIngredients(new Ingredient("Lentils", 23, 10));
+                addIngredients(new Ingredient("Sweet Potatoes", 11, 5));
                 addIngredients(new Ingredient("Carrots", 41, 3));
                 addIngredients(new Ingredient("Onion", 44, 2));
                 addIngredients(new Ingredient("Garlic", 4, 0));
-                addIngredients(new Ingredient("Diced Tomatoes", 32, 0));
+                addIngredients(new Ingredient("Diced Tomatoes", 3, 0));
                 addIngredients(new Ingredient("Vegetable Broth", 10, 0));
                 addIngredients(new Ingredient("Salt", 0, 0));
                 addIngredients(new Ingredient("Pepper", 0, 0));
-                addIngredients(new Ingredient("Olive Oil", 119, 7));
+                addIngredients(new Ingredient("Olive Oil", 11, 7));
                 addOptionalIngredient(new Ingredient("Celery", 16, 1));
                 addOptionalIngredient(new Ingredient("Bay Leaves", 5, 0));
                 addOptionalIngredient(new Ingredient("Paprika", 20, 1));
@@ -79,17 +79,17 @@ public class Meal extends Recipe {
                 break;
             case 3:
                 setName("Grilled Chicken and Mango Salad");
-                addIngredients(new Ingredient("Chicken Breast", 165, 8));
+                addIngredients(new Ingredient("Chicken Breast", 16, 8));
                 addIngredients(new Ingredient("Cherry Tomatoes", 18, 1));
-                addIngredients(new Ingredient("Mango", 60, 3));
+                addIngredients(new Ingredient("Mango", 6, 3));
                 addIngredients(new Ingredient("Mixed Greens", 5, 0));
                 addIngredients(new Ingredient("Cucumber", 8, 0));
                 addIngredients(new Ingredient("Red Onion", 40, 2));
-                addIngredients(new Ingredient("Olive Oil", 119, 7));
+                addIngredients(new Ingredient("Olive Oil", 11, 7));
                 addIngredients(new Ingredient("Salt", 0, 0));
                 addIngredients(new Ingredient("Pepper", 0, 0));
                 addIngredients(new Ingredient("Lime Wedges", 4, 0));
-                addOptionalIngredient(new Ingredient("Avocado", 240, 10));
+                addOptionalIngredient(new Ingredient("Avocado", 24, 10));
                 addOptionalIngredient(new Ingredient("Fresh Cilantro", 1, 0));
 
                 addCookware(new Cookware("Grill Pan", 5));
@@ -143,7 +143,7 @@ public class Meal extends Recipe {
                 }
             }
             if (!found) {
-                System.out.println("Ingredient (Wrong Spelling) not recognized. Please type it out again.");
+                System.out.println("Ingredient (Wrong Spelling/There's Space) not recognized. Please type it out again.");
             }
         }
         return selectedIngredients;
@@ -155,10 +155,11 @@ public class Meal extends Recipe {
         for (Cookware cookware : getCookware()) {
             System.out.println("- " + cookware.getType());
         }
-        System.out.println("Optional cookware:");
+        System.out.println("Optional cookware: None"); // There's not really any optional cookwares
         for (Cookware cookware : optionalCookware) {
             System.out.println("- " + cookware.getType());
         }
+
         System.out.println("Type the name of the cookware you're going to use (type 'done' when finished):");
         while (true) {
             String cookwareName = input.nextLine().toLowerCase(); // Convert input to lowercase
@@ -219,7 +220,15 @@ public class Meal extends Recipe {
         int totalHealthScore = 0;
         int totalHealthImpact = 0;
     
-        if (getName().equals("Quinoa Salad and Roasted Vegetables")) {
+        if (getName().equals("Quinoa Salad and Roasted Vegetables")) { 
+            for (Ingredient ingredient : selectedIngredients) { // Calculate the total nutrition and health score of selected ingredients
+                totalNutrition += ingredient.getNutritionValue(); 
+                totalHealthScore += ingredient.getHealthScore(); 
+            }
+                for (Cookware cookware : selectedCookware) {
+                totalHealthImpact += cookware.getHealthImpact(); // Calculate the total health impact of selected cookware
+            }
+
             System.out.println("Step 1: Rinse quinoa under cold water.");
             System.out.println("Will you rinse the quinoa? (yes/no)");
             String rinse = input.nextLine();
@@ -227,7 +236,7 @@ public class Meal extends Recipe {
                 score += 10;
                 System.out.println("Great choice! Rinsing the quinoa helps remove bitterness.");
                 
-                System.out.println("*Running Water* 💦💦💦💦💦💦");
+                System.out.println("*Running Water* ");
             } else {
                 score -= 5;
                 System.out.println("Skipping the rinsing process means the quinoa might taste bitter.");
@@ -270,7 +279,7 @@ public class Meal extends Recipe {
             if (preheatOven.equalsIgnoreCase("yes")) {
                 score += 10;
                 System.out.println("Excellent! Preheating the oven ensures even roasting.");
-                System.out.println("Beep beep! 🌡️🔥");
+                System.out.println("Beep beep!");
             } else {
                 score -= 5;
                 System.out.println("Not preheating the oven can lead to uneven roasting.");
@@ -385,19 +394,24 @@ public class Meal extends Recipe {
             System.out.println("Serving the salad! ");
             score += 10;
             System.out.println("Perfect! The salad is ready to be enjoyed.");
-    
-            System.out.println("You have finished preparing the Quinoa Salad and Roasted Vegetables.");
-            System.out.println("Your score for this meal is: " + score);
 
 
         } else if (getName().equals("Lentil and Sweet Potato Stew")) {
+            for (Ingredient ingredient : selectedIngredients) { // Calculate the total nutrition and health score of selected ingredients
+                totalNutrition += ingredient.getNutritionValue(); 
+                totalHealthScore += ingredient.getHealthScore(); 
+            }
+                for (Cookware cookware : selectedCookware) {
+                totalHealthImpact += cookware.getHealthImpact(); // Calculate the total health impact of selected cookware
+            }
+
             System.out.println("Step 1: Rinse the lentils under cold water and drain.");
             System.out.println("Will you rinse the lentils? (yes/no)");
             String rinseLentils = input.nextLine();
             if (rinseLentils.equalsIgnoreCase("yes")) {
                 score += 10;
                 System.out.println("Great choice! Rinsing the lentils helps remove any debris.");
-                System.out.println("*Running Water* 💦💦💦💦💦💦");
+                System.out.println("*Running Water* ");
             } else {
                 score -= 5;
                 System.out.println("Skipping the rinsing process means the lentils might have debris.");
@@ -409,7 +423,7 @@ public class Meal extends Recipe {
             if (cubeSweetPotato.equalsIgnoreCase("yes")) {
                 score += 10;
                 System.out.println("Great! Cubing the sweet potato ensures even cooking.");
-                System.out.println("Chop chop chop... 🍠");
+                System.out.println("Chop chop chop... ");
             } else {
                 score -= 5;
                 System.out.println("Skipping this step might lead to uneven cooking.");
@@ -421,7 +435,7 @@ public class Meal extends Recipe {
             if (diceCarrots.equalsIgnoreCase("yes")) {
                 score += 10;
                 System.out.println("Great! Dicing the carrots ensures even cooking.");
-                System.out.println("Chop chop chop... 🥕");
+                System.out.println("Chop chop chop... ");
             } else {
                 score -= 5;
                 System.out.println("Skipping this step might lead to uneven cooking.");
@@ -433,7 +447,7 @@ public class Meal extends Recipe {
             if (diceOnionGarlic.equalsIgnoreCase("yes")) {
                 score += 10;
                 System.out.println("Great! Dicing the onion and mincing the garlic ensures even cooking.");
-                System.out.println("Chop chop chop... 🧅🧄");
+                System.out.println("Chop chop chop... ");
             } else {
                 score -= 5;
                 System.out.println("Skipping this step might lead to uneven cooking.");
@@ -461,7 +475,7 @@ public class Meal extends Recipe {
                 score -= 5;
                 System.out.println("Skipping this step might lead to uneven cooking.");
             }
-            System.out.println("Step 7: Add the diced onion to the pot and sauté for 3–4 minutes, stirring with the wooden spoon, until the onion becomes soft and translucent.");
+            System.out.println("Step 7: Add the diced onion to the pot and sauté for 3-4 minutes, stirring with the wooden spoon, until the onion becomes soft and translucent.");
             System.out.println("Will you sauté the diced onion? (yes/no)");
             String sauteOnion = input.nextLine();
             if (sauteOnion.equalsIgnoreCase("yes")) {
@@ -589,10 +603,6 @@ public class Meal extends Recipe {
                 System.out.println("Skipping this step might lead to less flavor.");
             }
 
-            System.out.println("Step 17: Ladle the stew into bowls and serve warm. You can pair it with crusty bread or enjoy it on its own!");
-            score += 10;
-            System.out.println("Your Lentil and Sweet Potato Stew is ready to be enjoyed. 🥣");
-
             for (Ingredient ingredient : selectedIngredients) {
                 if (ingredient.getName().equalsIgnoreCase("Avocado")) {
                     System.out.println("Will you add avocado? (yes/no)");
@@ -629,13 +639,22 @@ public class Meal extends Recipe {
                         System.out.println("Feta cheese adds a tangy flavor to the stew.");
                     }
                 }
-            }
 
-            System.out.println("You have finished preparing the Lentil and Sweet Potato Stew.");
-            System.out.println("Your score for this meal is: " + score);
+            System.out.println("Step 17: Ladle the stew into bowls and serve warm. You can pair it with crusty bread or enjoy it on its own!");
+            score += 10;
+            System.out.println("Your Lentil and Sweet Potato Stew is ready to be enjoyed.");
+            }
 
 
         } else if (getName().equals("Grilled Chicken and Mango Salad")) {
+            for (Ingredient ingredient : selectedIngredients) { // Calculate the total nutrition and health score of selected ingredients
+                totalNutrition += ingredient.getNutritionValue(); 
+                totalHealthScore += ingredient.getHealthScore(); 
+            }
+                for (Cookware cookware : selectedCookware) {
+                totalHealthImpact += cookware.getHealthImpact(); // Calculate the total health impact of selected cookware
+            }
+
             System.out.println("Step 1: Pat the chicken breasts dry with a paper towel. Season both sides generously with salt and pepper.");
             System.out.println("Will you pat the chicken breasts dry and season them? (yes/no)");
             String prepareChicken = input.nextLine();
@@ -653,7 +672,7 @@ public class Meal extends Recipe {
             if (chopTomatoes.equalsIgnoreCase("yes")) {
                 score += 10;
                 System.out.println("Awesome! Halving the cherry tomatoes adds a fresh touch.");
-                System.out.println("Chop chop chop... 🍅");
+                System.out.println("Chop chop chop...");
             } else {
                 score -= 5;
                 System.out.println("Skipping this step might lead to uneven ingredient distribution.");
@@ -665,7 +684,7 @@ public class Meal extends Recipe {
             if (diceMango.equalsIgnoreCase("yes")) {
                 score += 10;
                 System.out.println("Fantastic! Dicing the mango adds a sweet, juicy flavor.");
-                System.out.println("Chop chop chop... 🥭");
+                System.out.println("Chop chop chop... ");
             } else {
                 score -= 5;
                 System.out.println("Skipping this step might lead to uneven ingredient distribution.");
@@ -677,7 +696,7 @@ public class Meal extends Recipe {
             if (sliceVegetables.equalsIgnoreCase("yes")) {
                 score += 10;
                 System.out.println("Great! Slicing the cucumber and red onion adds a crisp, refreshing touch.");
-                System.out.println("Chop chop chop... 🥒🧅");
+                System.out.println("Chop chop chop... ");
             } else {
                 score -= 5;
                 System.out.println("Skipping this step might lead to uneven ingredient distribution.");
@@ -728,7 +747,7 @@ public class Meal extends Recipe {
                 System.out.println("Skipping this step might lead to uneven cooking.");
             }
             
-            System.out.println("Step 9: Cook for 4–5 minutes on one side without moving them to achieve nice grill marks. Flip using the tongs and cook for another 4–5 minutes, or until the internal temperature reaches 165°F (74°C).");
+            System.out.println("Step 9: Cook for 4-5 minutes on one side without moving them to achieve nice grill marks. Flip using the tongs and cook for another 4–5 minutes, or until the internal temperature reaches 165°F (74°C).");
             System.out.println("How long will you cook the chicken for on each side? (minutes)");
             int grillTime = input.nextInt();
             input.nextLine(); // Consume newline
@@ -789,7 +808,7 @@ public class Meal extends Recipe {
             if (sliceChicken.equalsIgnoreCase("yes")) {
                 score += 10;
                 System.out.println("Fantastic! Slicing the chicken ensures even distribution.");
-                System.out.println("Chop chop chop... 🍗");
+                System.out.println("Chop chop chop... ");
             } else {
                 score -= 5;
                 System.out.println("Skipping this step might lead to uneven ingredient distribution.");
@@ -839,14 +858,182 @@ public class Meal extends Recipe {
 
             System.out.println("Step 16: Serve the Grilled Chicken and Mango Salad immediately and enjoy your delicious creation!");
             score += 10;
-            System.out.println("Your Grilled Chicken and Mango Salad is ready to be enjoyed. 🥗");
-
-            System.out.println("You have finished preparing the Grilled Chicken and Mango Salad.");
-            System.out.println("Your score for this meal is: " + score);
+            System.out.println("Your Grilled Chicken and Mango Salad is ready to be enjoyed. ");
         }
+
+        for (Ingredient ingredient : optionalIngredients) { 
+            if (!selectedIngredients.contains(ingredient)) { 
+                score -= 10; // Deducts points to make the scoring more balanced
+                } 
+            }
+
+        // Calculate the grades 
+        String nutritionGrade = calculateNutritionValueGrade(totalNutrition); 
+        String healthScoreGrade = calculateHealthScoreGrade(totalHealthScore); 
+        String healthImpactGrade = calculateHealthImpactGrade(totalHealthImpact); 
+        
+        // Calculate overall grade 
+        String overallGrade = calculateOverallGrade(score, nutritionGrade, healthScoreGrade, healthImpactGrade); 
+        // Output final score and grades 
+        System.out.println("You have finished preparing " + getName() + "."); 
+        System.out.println("Your score for this meal is: " + score); 
+        System.out.println("Nutrition Value Grade: " + nutritionGrade); 
+        System.out.println("Health Score Grade: " + healthScoreGrade); 
+        System.out.println("Health Impact Grade: " + healthImpactGrade); 
+        System.out.println("Overall Grade: " + overallGrade); 
+
+        // Provide feedback messages
+        if (overallGrade.equals("S")) { 
+            System.out.println("Outstanding performance! You are a culinary master."); 
+        } else if (overallGrade.startsWith("A")) { 
+            System.out.println("Excellent job! Keep up the great work."); 
+        } else if (overallGrade.startsWith("B")) { 
+            System.out.println("Good job! With a little more practice, you'll be even better.");
+        } else if (overallGrade.startsWith("C")) {
+            System.out.println("Not bad, but there's room for improvement. Keep trying!");
+        } else if (overallGrade.startsWith("D")) {
+            System.out.println("Keep practicing, and you'll get better!");
+        } else {
+            System.out.println("Don't give up! Cooking takes practice. Try again and improve your skills.");
+        }
+        
     }
-    
+
     private void addOptionalIngredient(Ingredient ingredient) {
         optionalIngredients.add(ingredient);
     }
-}
+
+    // Separate grading methods for each category 
+    private String calculateNutritionValueGrade(int value) {
+        if (value >= 250) return "S"; 
+        else if (value >= 220) return "A+";
+        else if (value >= 190) return "A";
+        else if (value >= 160) return "A-";
+        else if (value >= 130) return "B+";
+        else if (value >= 100) return "B";
+        else if (value >= 70) return "B-";
+        else if (value >= 50) return "C+";
+        else if (value >= 40) return "C";
+        else if (value >= 30) return "C-";
+        else if (value >= 20) return "D+";
+        else if (value >= 10) return "D";
+        else return "F";
+    }
+    
+    private String calculateHealthScoreGrade(int value) {
+        if (value >= 30) return "S";
+        else if (value >= 26) return "A+";
+        else if (value >= 22) return "A";
+        else if (value >= 18) return "A-";
+        else if (value >= 14) return "B+";
+        else if (value >= 10) return "B";
+        else if (value >= 7) return "B-";
+        else if (value >= 5) return "C+";
+        else if (value >= 3) return "C";
+        else if (value >= 2) return "C-";
+        else if (value >= 1) return "D+";
+        else return "F";
+    }
+    
+    private String calculateHealthImpactGrade(int value) {
+        if (value >= 20) return "S"; 
+        else if (value >= 18) return "A+";
+        else if (value >= 16) return "A";
+        else if (value >= 14) return "A-";
+        else if (value >= 12) return "B+";
+        else if (value >= 10) return "B";
+        else if (value >= 8) return "B-";
+        else if (value >= 6) return "C+";
+        else if (value >= 4) return "C";
+        else if (value >= 2) return "C-";
+        else return "F";
+    }    
+
+    private String calculateOverallGrade(int score, String nutritionGrade, String healthScoreGrade, String healthImpactGrade) {
+        String[] grades = {nutritionGrade, healthScoreGrade, healthImpactGrade};
+        int totalGradeValue = 0;
+        for (String grade : grades) {
+            switch (grade) {
+                case "S":
+                    totalGradeValue += 13;
+                    break;
+                case "A+":
+                    totalGradeValue += 12;
+                    break;
+                case "A":
+                    totalGradeValue += 11;
+                    break;
+                case "A-":
+                    totalGradeValue += 10;
+                    break;
+                case "B+":
+                    totalGradeValue += 9;
+                    break;
+                case "B":
+                    totalGradeValue += 8;
+                    break;
+                case "B-":
+                    totalGradeValue += 7;
+                    break;
+                case "C+":
+                    totalGradeValue += 6;
+                    break;
+                case "C":
+                    totalGradeValue += 5;
+                    break;
+                case "C-":
+                    totalGradeValue += 4;
+                    break;
+                case "D+":
+                    totalGradeValue += 3;
+                    break;
+                case "D":
+                    totalGradeValue += 2;
+                    break;
+                case "D-":
+                    totalGradeValue += 1;
+                    break;
+                case "F":
+                    totalGradeValue += 0;
+                    break;
+            }
+        }
+    
+        // Adjust totalGradeValue based on score
+        if (score < 0) {
+            totalGradeValue -= Math.abs(score) / 10; // Deduct a point for each 10 points below zero
+        } else {
+            totalGradeValue += score / 10; // Add a point for each 10 points above zero
+        }
+    
+        if (totalGradeValue >= 36) {
+            return "S";
+        } else if (totalGradeValue >= 34) {
+            return "A+";
+        } else if (totalGradeValue >= 31) {
+            return "A";
+        } else if (totalGradeValue >= 28) {
+            return "A-";
+        } else if (totalGradeValue >= 25) {
+            return "B+";
+        } else if (totalGradeValue >= 22) {
+            return "B";
+        } else if (totalGradeValue >= 19) {
+            return "B-";
+        } else if (totalGradeValue >= 16) {
+            return "C+";
+        } else if (totalGradeValue >= 13) {
+            return "C";
+        } else if (totalGradeValue >= 10) {
+            return "C-";
+        } else if (totalGradeValue >= 7) {
+            return "D+";
+        } else if (totalGradeValue >= 4) {
+            return "D";
+        } else if (totalGradeValue >= 1) {
+            return "D-";
+        } else {
+            return "F";
+        }
+    }
+}    
