@@ -28,3 +28,6 @@ To install Healthy Cooking Game, follow the steps below:
 ## Known Issues or Limitations
 - This game does not save the results of your sessions.
 - The selection process for ingredients and cookware may not cover all possible variations.
+
+# Credits
+- Programmer - Clarenz Ferrer(https://github.com/Clarjem)
